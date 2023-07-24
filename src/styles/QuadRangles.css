@@ -3,15 +3,13 @@
     background-color: rgb(28,28,28);
     height: 100%;
     width: 55%;
-    
-    transform: skew(-18deg);
-    -webkit-transform: skew(-18deg);
-    -moz-transform: skew(-18deg);
-    -ms-transform: skew(-18deg);
-    -o-transform: skew(-18deg);
+    /* border: 1px solid; */
+    transform: skew(-20deg);
+    -webkit-transform: skew(-20deg);
+    -moz-transform: skew(-20deg);
+    -ms-transform: skew(-20deg);
+    -o-transform: skew(-20deg);
     z-index: 1;
-    /* border: 1px solid #fff; */
- 
 }
 
 .right{
@@ -20,11 +18,11 @@ left: 55%;
 
 .individual{
     left: 55%;
-    transform: skew(18deg);
-    -webkit-transform: skew(18deg);
-    -moz-transform: skew(18deg);
-    -ms-transform: skew(18deg);
-    -o-transform: skew(18deg);
+    transform: skew(20deg);
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -ms-transform: skew(20deg);
+    -o-transform: skew(20deg);
 }
 
 @media (max-width: 320px) {
@@ -32,11 +30,7 @@ left: 55%;
         width: 100%;
         ;
         left: 7%;
-        transform: skew(-18deg);
-        -webkit-transform: skew(-18deg);
-        -moz-transform: skew(-18deg);
-        -ms-transform: skew(-18deg);
-        -o-transform: skew(-18deg);
+       
 }
 
     
@@ -46,11 +40,7 @@ left: 55%;
 
     .individual {
         left: 50%;
-        transform: skew(18deg);
-        -webkit-transform: skew(18deg);
-        -moz-transform: skew(18deg);
-        -ms-transform: skew(18deg);
-        -o-transform: skew(18deg);
+       
 }
 }
 
@@ -58,11 +48,7 @@ left: 55%;
     .quadRangle {
         width: 60%;
         ;
-        transform: skew(-18deg);
-        -webkit-transform: skew(-18deg);
-        -moz-transform: skew(-18deg);
-        -ms-transform: skew(-18deg);
-        -o-transform: skew(-18deg);
+        
 }
 
     
@@ -72,11 +58,7 @@ left: 55%;
 
     .individual {
         left: 50%;
-        transform: skew(18deg);
-        -webkit-transform: skew(18deg);
-        -moz-transform: skew(18deg);
-        -ms-transform: skew(18deg);
-        -o-transform: skew(18deg);
+       
 }
 }
 
@@ -84,12 +66,7 @@ left: 55%;
    .quadRangle {
         width: 110%;
         left: 2%;
-        
-        transform: skew(-18deg);
-        -webkit-transform: skew(-18deg);
-        -moz-transform: skew(-18deg);
-        -ms-transform: skew(-18deg);
-        -o-transform: skew(-18deg);
+       
 }
 
     
@@ -99,11 +76,7 @@ left: 55%;
 
     .individual {
         left: 50%;
-        transform: skew(18deg);
-        -webkit-transform: skew(18deg);
-        -moz-transform: skew(18deg);
-        -ms-transform: skew(18deg);
-        -o-transform: skew(18deg);
+       
 }
 }
 
@@ -111,11 +84,7 @@ left: 55%;
     .quadRangle {
         width: 100%;
         left: 5%;
-        transform: skew(-18deg);
-        -webkit-transform: skew(-18deg);
-        -moz-transform: skew(-18deg);
-        -ms-transform: skew(-18deg);
-        -o-transform: skew(-18deg);
+       
 }
 
     
@@ -125,11 +94,7 @@ left: 55%;
 
     .individual {
         left: 50%;
-        transform: skew(18deg);
-        -webkit-transform: skew(18deg);
-        -moz-transform: skew(18deg);
-        -ms-transform: skew(18deg);
-        -o-transform: skew(18deg);
+       
 }
 }
 
@@ -137,11 +102,7 @@ left: 55%;
     .quadRangle {
         width: 60%;
         ;
-        transform: skew(-18deg);
-        -webkit-transform: skew(-18deg);
-        -moz-transform: skew(-18deg);
-        -ms-transform: skew(-18deg);
-        -o-transform: skew(-18deg);
+        
 }
 
     
@@ -151,10 +112,6 @@ left: 55%;
 
     .individual {
         left: 50%;
-        transform: skew(18deg);
-        -webkit-transform: skew(18deg);
-        -moz-transform: skew(18deg);
-        -ms-transform: skew(18deg);
-        -o-transform: skew(18deg);
+        
 }
 }

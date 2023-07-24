@@ -1,14 +1,17 @@
 .controls{
     display: flex;
-    width: 30%;
+    width: 50%;
+    justify-content: space-evenly;
     /* border: 1px solid #fff; */
     margin:0.5rem auto ;
+    gap: 1rem;
 }
 .btn-choose{
     width: 10rem;
     color: aliceblue;
     background-color: rgba(128, 128, 128, 0.252);
     border: 1px solid grey;
+    margin-left:auto ;
 }
 
 .btn-choose:hover{
@@ -34,4 +37,25 @@ text-align: center;
 .explaining{
     font-size: 1.4rem;
     color: rgb(174, 173, 173);
+}
+
+.used{
+    filter:grayscale(70%) ;
+    -webkit-filter:grayscale(70%) ;
+}
+
+.used-info{
+    margin: 6rem auto;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius:0.5rem ;
+    box-shadow: 0px 0px 3px 2px rgb(160, 160, 160);
+    width: 50%;
+    text-align: center;
+    background-color: rgba(134, 134, 134, 0.708);
+    -webkit-border-radius:0.5rem ;
+    -moz-border-radius:0.5rem ;
+    -ms-border-radius:0.5rem ;
+    -o-border-radius:0.5rem ;
 }

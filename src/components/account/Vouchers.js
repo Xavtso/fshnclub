@@ -19,7 +19,7 @@ export default function Vouchers() {
           <Card id="vouch-card" title={"01"} event={"1 free"} />
           <Card id="vouch-card" title={"02"} event={"20%"} />
           <Card id="vouch-card" title={"03"} event={"Half price"} />
-          <Card id="vouch-card" title={"used"} event={"2 for 1"} />
+          <Card id="vouch-card" class={'used'} title={"used"} event={"2 for 1"} />
         </div>
       </div>
     );

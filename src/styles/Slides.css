@@ -23,12 +23,16 @@
     color: #fff;
     z-index: 2;
     font-size: 5.2rem;
-    left: 5%;
+    padding:1rem 5rem ;
     
+    /* border: 1px solid; */
+    width: 100%;
+    text-align: left;    
 }
 
 .title-right{
-    right: -45%;
+    text-align: right;
+    
 }
 
 @media (max-width: 320px) {
@@ -47,13 +51,12 @@
 
     .title {
         font-size: 2rem;
-        left: 2%;
         margin-top: 20%;
     }
 
     .title-right {
         margin-top: 30%;
-        right: -80%;
+        right: -40%;
     }
 }
 
@@ -73,13 +76,13 @@
 
     .title {
         font-size: 2.2rem;
-        left: 10%;
+        /* left: 10%; */
         margin-top: 40%;
     }
 
     .title-right {
         margin-top: 45%;
-        right: -25%;
+        right: -15%;
     }
 }
 
@@ -95,12 +98,12 @@
 
     .title {
         font-size: 3.2rem;
-        left: 5%;
+        /* left: 5%; */
         margin-top: 30%;
     }
     
     .title-right {
-        right: -50%;
+        right: -15%;
     }
 }
 
