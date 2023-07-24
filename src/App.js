@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Account from "./pages/Account";
+import Events from "./components/account/Events";
+import OpenHours from "./components/account/OpenHours";
+import Contact from "./components/account/Contact";
+import Voucher from "./components/account/Vouchers";
+import VouchCard from "./components/account/VouchCard";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/open-hours" element={<OpenHours />} />
+        <Route path="/contacts" element={<Contact />} />
+        <Route path="/about" element={<Contact />} />
+        <Route path="/vouchers" element={<Voucher />} />
+        <Route path="/voucher" element={<VouchCard />} />
+      </Routes>
+      
     </div>
   );
 }

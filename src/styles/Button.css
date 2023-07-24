@@ -1,0 +1,211 @@
+.custom-button {
+  position: relative;
+  width: 40rem;
+  border-radius: 10px 0px 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  height: 5rem;
+  /* background-color: #d2b56d; */
+  background-image: linear-gradient(to right, rgba(210, 181, 109, 0.8), rgba(210, 181, 109, 1));
+  z-index: 2;
+  bottom: -75%;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #222;
+  margin-inline: auto;
+  box-shadow: 0px 0px 10px 1px #222;
+  -webkit-border-radius: 10px 0px 0px 10px;
+  -moz-border-radius: 10px 0px 0px 10px;
+  -ms-border-radius: 10px 0px 0px 10px;
+  -o-border-radius: 10px 0px 0px 10px;
+}
+
+.btn-left{
+    right: 35%;
+}
+.center{
+    width: 100%;
+    right: 20%;
+}
+
+
+.custom-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -2.7rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 2.6rem 0 2.6rem 2.8rem;
+  border-color: transparent transparent transparent #d2b56d;
+  transform: translateY(-50%) rotate(0deg);
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  -moz-transform: translateY(-50%) rotate(0deg);
+  -ms-transform: translateY(-50%) rotate(0deg);
+  -o-transform: translateY(-50%) rotate(0deg);
+}
+.custom-button:hover {
+    background-color: #d2b56d;
+  animation: arrow 1s infinite alternate;
+  -webkit-animation: arrow 1s infinite alternate;
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10rem);
+  }
+}
+
+@media (max-width: 320px) {
+  .custom-button {
+    width: 80%;
+    top: 75%;
+    left: -20%;
+    height: 3rem;
+    font-size: 0.9rem;
+   
+}
+
+  .btn-left,
+  .center {
+    right: 0;
+  }
+  .custom-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1.7rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.6rem 0 1.6rem 1.8rem;
+  border-color: transparent transparent transparent #d2b56d;
+  transform: translateY(-50%) rotate(0deg);
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  -moz-transform: translateY(-50%) rotate(0deg);
+  -ms-transform: translateY(-50%) rotate(0deg);
+  -o-transform: translateY(-50%) rotate(0deg);
+}
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+  .custom-button {
+    width: 100%;
+    bottom: -50%;
+    font-size: 2.2rem;
+  }
+
+  .btn-left,
+  .center {
+    right: 0;
+  }
+
+  .custom-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1.7rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.6rem 0 1.6rem 1.8rem;
+  border-color: transparent transparent transparent #d2b56d;
+  transform: translateY(-50%) rotate(0deg);
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  -moz-transform: translateY(-50%) rotate(0deg);
+  -ms-transform: translateY(-50%) rotate(0deg);
+  -o-transform: translateY(-50%) rotate(0deg);
+}
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  .custom-button {
+    width: 100%;
+    padding: 0.1rem 0.8rem;
+    top: 80%;
+    font-size: 1rem;
+    height: 3.5rem;
+    left: -30%;
+  }
+
+  .btn-left,
+  .center {
+    right: 0;
+  }
+  .custom-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1.4rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.91rem 0 1.91rem 1.5rem;
+  border-color: transparent transparent transparent #d2b56d;
+  transform: translateY(-50%) rotate(0deg);
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  -moz-transform: translateY(-50%) rotate(0deg);
+  -ms-transform: translateY(-50%) rotate(0deg);
+  -o-transform: translateY(-50%) rotate(0deg);
+}
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+    .custom-button {
+        width: 80%;
+        padding: 0.1rem 0.8rem;
+        top: 80%;
+        font-size: 1.1rem;
+        height: 4rem;
+        left: -10%;
+    }
+    .custom-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1.75rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2.2rem 0 2.2rem 1.8rem;
+    border-color: transparent transparent transparent #d2b56d;
+    transform: translateY(-50%) rotate(0deg);
+    -webkit-transform: translateY(-50%) rotate(0deg);
+    -moz-transform: translateY(-50%) rotate(0deg);
+    -ms-transform: translateY(-50%) rotate(0deg);
+    -o-transform: translateY(-50%) rotate(0deg);
+}
+
+  .btn-left {
+    right: -50%;
+  }
+
+  .center {
+    width: 100%;
+    right: 15%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .custom-button {
+    width: 60%;
+    bottom: -65%;
+  }
+
+  .btn-left {
+    right: 50%;
+  }
+
+  .center {
+    width: 100%;
+    right: 10%;
+  }
+}

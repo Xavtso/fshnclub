@@ -1,0 +1,143 @@
+.images{
+    position: absolute;
+    height: 100%;
+    width: 75%;
+    z-index:-1;
+    left: 25%;
+
+}
+.left{
+    left:0
+}
+
+.slide{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin-top: 0rem;
+}
+
+.title{
+    text-shadow: 0px 3px 2px #4b4b4b;
+    position: absolute;
+    color: #fff;
+    z-index: 2;
+    font-size: 5.2rem;
+    left: 5%;
+    
+}
+
+.title-right{
+    right: -45%;
+}
+
+@media (max-width: 320px) {
+    .slide{
+        height: 65vh;
+        width: 100%;
+    }
+    .images {
+        width: 80%;
+        height: 65vh;
+        left: 40%;
+    }
+    .left{
+        left: 0;
+    }
+
+    .title {
+        font-size: 2rem;
+        left: 2%;
+        margin-top: 20%;
+    }
+
+    .title-right {
+        margin-top: 30%;
+        right: -80%;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 376px) {
+    .slide{
+        height: 80vh;
+    }
+    .images {
+        width: 75%;
+        left: 25%;
+        height: 80vh;
+    }
+
+    .left{
+        left: 0;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        left: 10%;
+        margin-top: 40%;
+    }
+
+    .title-right {
+        margin-top: 45%;
+        right: -25%;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 426px) {
+    .images {
+        width: 75%;
+        left: 30%;
+    }
+
+    .left{
+        left: 0;
+    }
+
+    .title {
+        font-size: 3.2rem;
+        left: 5%;
+        margin-top: 30%;
+    }
+    
+    .title-right {
+        right: -50%;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    .images {
+        width: 70%;
+        left: 30.5%;
+    }
+    .left{
+        left: 0;
+    }
+
+    .title {
+        font-size: 5rem;
+        left: 2%;
+    }
+
+    .title-right {
+        right: -45%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .images {
+        width: 75%;
+        left: 25.5%;
+    }
+    .left{
+        left: 0;
+    }
+
+    .title {
+        font-size: 5.2rem;
+        left: 5%;
+    }
+
+    .title-right {
+        right: -45%;
+    }
+}
