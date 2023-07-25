@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+
 import Card from "../components/account/Card";
 import '../styles/Account.css';
 export default function Account() {
@@ -13,7 +13,6 @@ export default function Account() {
                 <Card id = 'about' title={ 'About' } />
                 <Card id = 'contact' title={ 'Contact'} />
             </div>
-            <Footer/>
         </div>
     )
 }

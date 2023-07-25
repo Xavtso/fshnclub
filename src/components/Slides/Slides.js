@@ -1,3 +1,4 @@
+
 import SlideFive from "./Slide-Five";
 import SlideFour from "./Slide-Four";
 import SlideOne from "./Slide-One";
@@ -16,6 +17,7 @@ export default function Slides() {
       <SlideFive class={"right"} side={"left"} />
       <SlideSix btnSide={"center"} />
       <SlideSeven class={"right"} side={"left"} />
+     
     </>
   );
 }
