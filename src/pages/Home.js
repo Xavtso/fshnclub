@@ -1,13 +1,42 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Slides from "../components/Slides/Slides";
-
-export default function Home() {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../styles/LandingPage.css'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
+// import phone from '../images/phone (4000 × 2700px) (1).png';
+export default function Home() { 
     return (
-        <>
-            <Header />
-            <Slides />
-            <Footer/>
-        </>
-    )
+      <div className="landing-body">
+        <nav className="navbar">
+          <span className="logo">Woody Member System</span>
+          <input type="checkbox" id="menu-toggle" />
+          <label className="menu-button-container" htmlFor="menu-toggle">
+            <div className="menu-button"></div>
+          </label>
+          <ul className="menu">
+            <li>
+              <span className="nav-item">About</span>
+            </li>
+            <li>
+              <span className="nav-item">Contact</span>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faUser} className="nav-item nav-icon" />
+            </li>
+          </ul>
+        </nav>
+
+        <div className="title-box">
+          <h1 className="land-title">
+            Bliv en Del <br />
+            af holdet!
+          </h1>
+          <h3 className="slogan">
+            Sam Woody member mod tager do ekslusive tilbud, rabatter og
+            invitationer til lukkede events!
+          </h3>
+          <button className="btn-sign">Sign Up</button>
+        </div>
+        <div className="phone-box"></div>
+        {/* <div className='title'></div> */}
+      </div>
+    );
 }

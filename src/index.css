@@ -6,9 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    background-color: rgb(28,28,28);
+    background-color: #1c1c1c;
   overflow-x: hidden;
-  color: #fff;
+  color: aliceblue;
 }
 
 code {

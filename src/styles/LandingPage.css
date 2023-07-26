@@ -1,0 +1,343 @@
+.landing-body {
+  width: 100%;
+  height: 100vh;
+  
+  background-image: url("../images/wood\ \(4000\ ×\ 2700px\).png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Common styles for all screen sizes */
+.navbar {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 1rem;
+  color: #ffffffd4;
+}
+
+.nav-icon {
+  margin-left: auto;
+}
+
+.nav-items {
+  width: 30%;
+  display: flex;
+  margin-left: auto;
+  gap: 1rem;
+}
+
+.nav-item {
+  margin: auto;
+  font-size: 1.3rem;
+}
+
+.nav-item:hover {
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s all;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.4rem;
+  cursor: none;
+}
+
+/* Hamburger menu styles */
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+.menu{
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    margin-right:2rem ;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+/* Media Query for the hamburger menu */
+@media (max-width: 700px) {
+  .nav-items {
+    display: none;
+  }
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 3rem;
+    margin:0 auto ;
+    left: -5%;
+    width: 87%;
+    background-color: #76634200;
+    height: 0;
+    gap: 0;
+    /*Додайтестильдляхованняелементівменюзазамовчуванням*/overflow: hidden;
+    transition: height 10s cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-transition: height 10s cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-transition: height 10s cubic-bezier(0.23, 1, 0.32, 1);
+    -ms-transition: height 10s cubic-bezier(0.23, 1, 0.32, 1);
+    -o-transition: height 10s cubic-bezier(0.23, 1, 0.32, 1);
+}
+  .menu li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5rem 0;
+    width: 50%;
+    color: white;
+    border-bottom: 1px solid #969292;
+  }
+
+  /* Зробіть меню видимим при перевірці чекбоксу #menu-toggle */
+  #menu-toggle:checked + .menu-button-container + .menu {
+    height: auto;
+  }
+}
+
+
+
+.phone-box{
+    position: relative;
+    margin-left: auto;
+    margin-right: 15%;
+    background-image: url('../images/phone.png');
+    width: 20rem;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow( 2px 3px 5px #222);
+    -webkit-filter: drop-shadow( 2px 3px 5px #222);
+}
+
+.title-box{
+    /* position: fixed; */
+    /* border: 1px solid; */
+    width: fit-content;
+    padding: 0.5rem 5rem;
+    text-align: left;
+    word-wrap: normal;
+    float: left;
+margin-left:1rem ;
+margin-top: 5rem;
+    margin-right:auto;
+}
+
+.land-title{
+    text-transform: capitalize;
+    font-weight: 900;
+    font-size: 4.5rem;
+}
+
+.slogan{
+    font-weight: 400;
+    color: #d3cfcf;
+    width: 60%;
+    font-size: 1.5rem;
+}
+
+.btn-sign{
+    background-color:#805430ef;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-top: 3rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    width: 8rem;
+    height: 2.5rem;
+    border:none ;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 400;
+    box-shadow: #222 0px 0px 5px 1px;
+}
+
+.btn-sign:hover{
+   background-color: #955e31ef;
+}
+
+
+@media (max-width: 320px) {
+
+  .phone-box{
+    width: 8rem;
+    height: 40%;
+    top: 15rem;
+    margin-right: 0.5rem;
+    /* background-size: сщмук; */
+  }
+  .title-box{
+    padding: 1.2rem;
+    margin: 0;
+    margin-top: 10rem;
+  }
+  .land-title{
+    font-size: 2rem;
+    margin: 0;
+  }
+  .slogan{
+    font-size:0.8rem ;
+    width: 50%;
+}
+.btn-sign{
+    margin-top: 2rem;
+    
+}
+  
+}
+
+@media (min-width: 321px) and (max-width: 375.5px) {
+  .phone-box{
+    width: 10rem;
+    height: 50%;
+    top: 11rem;
+    margin-right: 0.5rem;
+    /* background-size: сщмук; */
+  }
+  .title-box{
+    padding: 1.2rem;
+    margin: 0;
+    margin-top: 7rem;
+  }
+  .land-title{
+    font-size: 2.5rem;
+    margin: 0;
+    
+  }
+  .slogan{
+    font-size:1rem ;
+    width: 50%;
+}
+.btn-sign{
+    margin-top: 2rem;
+    
+}
+}
+
+@media (min-width: 376px) and (max-width: 426px) {
+    .phone-box{
+    width: 10rem;
+    height: 50%;
+    top: 11rem;
+    margin-right: 0.5rem;
+    /* background-size: сщмук; */
+  }
+  .title-box{
+    padding: 1.2rem;
+    margin: 0;
+    margin-top: 7rem;
+  }
+  .land-title{
+    font-size: 2.5rem;
+    margin: 0;
+    
+  }
+  .slogan{
+    font-size:1rem ;
+    width: 50%;
+}
+.btn-sign{
+    margin-top: 2rem;
+    
+}
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .phone-box{
+    width: 14rem;
+    height: 80%;
+    top: 1rem;
+    margin-right: 2rem;
+    /* background-size: сщмук; */
+  }
+  .title-box{
+    padding: 1.2rem;
+    margin: 2rem;
+    margin-top: 3rem;
+  }
+  .land-title{
+    font-size: 4rem;
+    margin: 0;
+    
+  }
+  .slogan{
+    font-size:1.2rem ;
+    width: 50%;
+}
+.btn-sign{
+    margin-top: 2rem;
+    
+}
+ 
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+.phone-box{
+    margin-right:2rem ;
+}
+.slogan{
+    font-weight: 400;
+    font-size: 1.2rem;
+    width: 60%;
+}
+.land-title{
+    margin-top: 0;
+    font-size: 4rem;
+}
+}
