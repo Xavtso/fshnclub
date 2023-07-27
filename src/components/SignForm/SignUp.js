@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function SignUp({ onCloseModal }) {
   const navigateTo = useNavigate("");
   const navTo = function () {
-    navigateTo("/account");
+    navigateTo("/user-home");
   };
 
   return (

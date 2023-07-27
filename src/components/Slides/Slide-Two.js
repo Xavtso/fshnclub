@@ -10,14 +10,14 @@ export default function SlideTwo(props) {
     <div className="slide">
           <QuadRangleRight class={props.class} />
       <h1 className=" title title-right">
-        KLIPPE <br /> KORT
+        EVENTS
       </h1>
+      <Button side={props.btnSide} text={"See upcoming events"} />
       <img
         className={`images ${props.side}`}
         src={packageImg}
         alt="package"
       ></img>
-      <Button side={props.btnSide} text={"5 klip udloser gavekort"} />
     </div>
   );
 }

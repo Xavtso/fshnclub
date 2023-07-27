@@ -12,12 +12,12 @@ export default function SlideFour(props) {
       <h1 className=" title first-title">
         CLICK/ <br /> COLLECT
       </h1>
+      <Button side={props.btnSide} text={"Hent samme dag"} />
       <img
         className={`images ${props.side}`}
         src={packageImg}
         alt="package"
       ></img>
-      <Button side={props.btnSide} text={"Hent samme dag"} />
     </div>
   );
 }

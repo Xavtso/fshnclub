@@ -12,12 +12,12 @@ export default function SlideFive(props) {
       <h1 className=" title title-right">
         VIDEO <br /> GUIDES
       </h1>
+      <Button side={props.btnSide} text={"INdret med fshn club"} />
       <img
         className={`images ${props.side}`}
         src={packageImg}
         alt="package"
       ></img>
-      <Button side={props.btnSide} text={"INdret med fshn club"} />
     </div>
   );
 }

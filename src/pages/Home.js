@@ -1,8 +1,27 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/LandingPage.css'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-// import phone from '../images/phone (4000 × 2700px) (1).png';
+
+import { useState } from 'react';
+import SignUp from '../components/SignForm/SignUp';
+import { useNavigate } from 'react-router-dom';
+
+
 export default function Home() { 
+    const [isModalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const navigateTo = function (endpoint) {
+        navigate(endpoint);
+    }
+
+     const handleIconClick = () => {
+       setModalOpen(true);
+     };
+
+     const handleCloseModal = () => {
+       setModalOpen(false);
+     };
     return (
       <div className="landing-body">
         <nav className="navbar">
@@ -13,13 +32,21 @@ export default function Home() {
           </label>
           <ul className="menu">
             <li>
-              <span className="nav-item">About</span>
+              <span className="nav-item" onClick={() => navigateTo("/about")}>
+                About
+              </span>
             </li>
             <li>
-              <span className="nav-item">Contact</span>
+              <span className="nav-item" onClick={() => navigateTo("/contacts")}>
+                Contact
+              </span>
             </li>
             <li>
-              <FontAwesomeIcon icon={faUser} className="nav-item nav-icon" />
+              <FontAwesomeIcon
+                icon={faUser}
+                className="nav-item nav-icon"
+                onClick={handleIconClick}
+              />
             </li>
           </ul>
         </nav>
@@ -33,10 +60,12 @@ export default function Home() {
             Sam Woody member mod tager do ekslusive tilbud, rabatter og
             invitationer til lukkede events!
           </h3>
-          <button className="btn-sign">Sign Up</button>
+          <button className="btn-sign" onClick={handleIconClick}>
+            Sign Up
+          </button>
         </div>
         <div className="phone-box"></div>
-        {/* <div className='title'></div> */}
+        {isModalOpen ? <SignUp onCloseModal={handleCloseModal} /> : null}
       </div>
     );
 }

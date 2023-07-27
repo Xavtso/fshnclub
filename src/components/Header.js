@@ -1,26 +1,23 @@
-import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { useNavigate } from 'react-router-dom';
 import '../styles/Header.css'
-import { useState } from "react";
-import SignUp from "./SignForm/SignUp";
+import '../styles/Account.css'
+
 export default function Header() {
-     const [isModalOpen, setModalOpen] = useState(false);
+     const navigate = useNavigate();
 
-     const handleIconClick = () => {
-       setModalOpen(true);
-     };
-
-     const handleCloseModal = () => {
-       setModalOpen(false);
+     const handleBackClick = () => {
+       navigate("/");
      };
     return (
       <>
         <div className="header">
-          <FontAwesomeIcon icon={faUser} className="user-icon"  onClick={handleIconClick}/>
+          <span className="btn-back" onClick={handleBackClick}>
+            &larr;
+          </span>
           <h1 className="head-title">FSHN</h1>
           <h2 className="head-quote"> very important members' club</h2>
         </div>
-        {isModalOpen && <SignUp onCloseModal={handleCloseModal} />}
       </>
     );
 }

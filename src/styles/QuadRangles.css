@@ -1,33 +1,49 @@
 .quadRangle{
     position: relative;
-    background-color: rgb(28,28,28);
+    /* background-color: rgb(28,28,28); */
     height: 100%;
-    width: 55%;
+    width: 50%;
+    left: 0;
+    background-image: url('../images/Left.png');
     /* border: 1px solid; */
-    transform: skew(-20deg);
+    background-size: 145%;
+    background-position: center;
+    /* background-position-x: left; */
+    
+    /* transform: skew(-20deg);
     -webkit-transform: skew(-20deg);
     -moz-transform: skew(-20deg);
     -ms-transform: skew(-20deg);
-    -o-transform: skew(-20deg);
+    -o-transform: skew(-20deg); */
     z-index: 1;
 }
 
+.quadLeft{
+    height: 100%;
+    width: 100%;
+}
+
+
 .right{
-left: 55%;
+background-image: url(../images/Right.png);
+background-position: left;
+background-size: 175%;
+left: 50%;
+/* position: absolute; */
+/* right:2em ; */
 }
 
 .individual{
-    left: 55%;
-    transform: skew(20deg);
-    -webkit-transform: skew(20deg);
-    -moz-transform: skew(20deg);
-    -ms-transform: skew(20deg);
-    -o-transform: skew(20deg);
+   background: none;
+   background-image: url('../images/Individual.png');
+ background-size: 155%;
+    background-position: left;
+    left: 42%;
 }
 
 @media (max-width: 320px) {
     .quadRangle {
-        width: 100%;
+        width: 10rem;
         ;
         left: 7%;
        
@@ -35,7 +51,7 @@ left: 55%;
 
     
 .right{
-    left: 50%;
+    /* left: 50%; */
 }
 
     .individual {

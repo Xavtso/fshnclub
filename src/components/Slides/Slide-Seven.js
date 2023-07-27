@@ -12,12 +12,12 @@ export default function SlideSeven(props) {
       <h1 className=" title title-right">
         SKRAB <br /> /VIND
       </h1>
+      <Button side={props.btnSide} text={"NYE PRAEMIER !"} />
       <img
         className={`images ${props.side}`}
         src={packageImg}
         alt="package"
       ></img>
-      <Button side={props.btnSide} text={"NYE PRAEMIER !"} />
     </div>
   );
 }

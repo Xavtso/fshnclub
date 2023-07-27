@@ -8,7 +8,7 @@ export default function UserHome() {
     <>
       <Header />
       <Slides />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

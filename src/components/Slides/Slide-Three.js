@@ -10,14 +10,14 @@ export default function SlideThree(props) {
     <div className="slide">
       <QuadRangleRight class={"individual"} />
       <h1 className=" title title-right">
-        SHOP <br /> ONLINE
+        OPENING HOURS
       </h1>
+      <Button side={props.btnSide} text={"Learn more"} />
       <img
         className={`images ${props.side}`}
         src={packageImg}
         alt="package"
       ></img>
-      <Button side={props.btnSide} text={"nedtaelling er i gang !"} />
     </div>
   );
 }

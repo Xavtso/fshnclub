@@ -146,6 +146,11 @@
   #menu-toggle:checked + .menu-button-container + .menu {
     height: auto;
   }
+
+  .logo{
+    font-size: 1.2rem;
+    margin-right:auto ;
+  }
 }
 
 
@@ -219,7 +224,7 @@ margin-top: 5rem;
     width: 8rem;
     height: 40%;
     top: 15rem;
-    margin-right: 0.5rem;
+    margin-right: 0.1rem;
     /* background-size: сщмук; */
   }
   .title-box{
@@ -246,14 +251,14 @@ margin-top: 5rem;
   .phone-box{
     width: 10rem;
     height: 50%;
-    top: 11rem;
-    margin-right: 0.5rem;
+    top: 12rem;
+    margin-right: 0.2rem;
     /* background-size: сщмук; */
   }
   .title-box{
     padding: 1.2rem;
     margin: 0;
-    margin-top: 7rem;
+    margin-top: 6rem;
   }
   .land-title{
     font-size: 2.5rem;

@@ -11,13 +11,13 @@ export default function Slides() {
   return (
     <>
       <SlideOne btnSide={"btn-left"} />
-      <SlideTwo class={"right"} side={"left"} btnSide={'center' } />
-      <SlideThree side={"left"} />
-      <SlideFour btnSide={"btn-left"} />
+      <SlideTwo class={"right"} side={"left"} btnSide={"center"} />
+      <SlideThree side={"left"} class={"right"} />
+      {/* <SlideFour btnSide={"btn-left"} />
       <SlideFive class={"right"} side={"left"} />
       <SlideSix btnSide={"center"} />
       <SlideSeven class={"right"} side={"left"} />
-     
+      */}
     </>
   );
 }

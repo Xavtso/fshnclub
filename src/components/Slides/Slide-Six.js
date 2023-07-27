@@ -12,12 +12,12 @@ export default function SlideSix(props) {
       <h1 className=" title ">
         ALTID <br /> LIGE VED <br/> HANDEN
       </h1>
+      <Button side={props.btnSide} text={"GA aldrig glip af et tilbud"} />
       <img
         className={`images ${props.side}`}
         src={packageImg}
         alt="package"
       ></img>
-      <Button side={props.btnSide} text={"GA aldrig glip af et tilbud"} />
     </div>
   );
 }
