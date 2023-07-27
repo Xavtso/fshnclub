@@ -1,16 +1,58 @@
 .header{
-height: 95vh;
+  /* margin-top:  -10rem; ; */
+height: 100vh;
 text-align: center;
+background-image:url(../images/Firefly\ pub\ in\ dark\ colors\,\ with\ bar\ table\ and\ barmen\ in\ black\ suit\,\ many\ smoke\ in\ the\ air\,\ image\ is.jpg) ;
+background-size: cover;
+background-position: center;
 }
 .head-title{
-    color: #fff;
-    font-size: 15rem;
+  color: #f2e8e8;
+  font-size: 15rem;
+  text-shadow: 0px 4px 2px #222;
 }
 .head-quote{
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 3rem;
-    translate:0rem -5rem;
+    color: #f2e8e8;
+  text-shadow: 0px 4px 2px #222;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 3rem;
+  /* translate:0rem -5rem; */
+}
+.scroll-quote{
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #f2e8e8;
+  margin-top: 5rem;
+  text-shadow: 0px 4px 2px #222;
+  
+}
+.land-arrow{
+  position: absolute;
+  bottom: 0;
+  text-shadow: 0px 4px 2px #222;
+    font-weight: 900;
+    font-size: 4rem;
+    bottom: 10%;
+    animation: arrow 1s infinite alternate;
+    -webkit-animation: arrow 1s infinite alternate;
+}
+
+@keyframes arrow {
+    from{
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+}
+    to{
+        transform: translateY(3rem);
+        -webkit-transform: translateY(3rem);
+        -moz-transform: translateY(3rem);
+        -ms-transform: translateY(3rem);
+        -o-transform: translateY(3rem);
+    }
 }
 
 .user-icon{
@@ -40,79 +82,92 @@ text-align: center;
 
 @media (max-width: 320px) {
   .header {
-    height: 55vh;
+    height: 100vh;
   }
 
   .head-title {
-    margin-top: 10rem;
+    position: relative;
+    /* margin-top: 10rem; */
+    top: 10rem;
     font-size: 6rem;
   }
 
   .head-quote {
-    margin-top: 6rem;
+    /* position: relative; */
+    margin-top: 12rem;
     font-size: 1rem;
   }
-
-  .user-icon {
-    right: -1rem;
-    font-size: 1.2rem;
+  .scroll-quote{
+    margin-top: 11rem;
   }
+  
 }
 
 @media (min-width: 321px) and (max-width: 376px) {
-  .header {
-    height: 80vh;
+    .header {
+    height: 100vh;
   }
 
   .head-title {
-    margin-top: 15rem;
+    position: relative;
+    /* margin-top: 10rem; */
+    top: 10rem;
     font-size: 6rem;
-}
-
-.head-quote {
-      margin-top: 5rem;
-    font-size: 1rem;
-  }
-
-  .user-icon {
-    font-size: 1.4rem;
-  }
-}
-
-@media (min-width: 376px) and (max-width: 426px) {
-  .header {
-    height: 85vh;
-  }
-
-  .head-title {
-    margin-top: 15rem;
-    font-size: 7rem;
-}
-
-.head-quote {
-      margin-top: 6rem;
-    font-size: 1.5rem;
-  }
-
-  .user-icon {
-    font-size: 1.6rem;
-  }
-}
-
-@media (min-width: 426px) and (max-width: 768px) {
-  .header {
-    height: 90vh;
-  }
-
-  .head-title {
-    font-size: 12rem;
   }
 
   .head-quote {
-    font-size: 3rem;
+    /* position: relative; */
+    margin-top: 12rem;
+    font-size: 1rem;
+  }
+  .scroll-quote{
+    margin-top: 11rem;
+  }
+  
+}
+
+@media (min-width: 376px) and (max-width: 426px) {
+    .header {
+    height: 100vh;
   }
 
-  .user-icon {
-    font-size: 1.8rem;
+  .head-title {
+    position: relative;
+    /* margin-top: 10rem; */
+    top: 10rem;
+    font-size: 6rem;
   }
+
+  .head-quote {
+    /* position: relative; */
+    margin-top: 12rem;
+    font-size: 1rem;
+  }
+  .scroll-quote{
+    margin-top: 11rem;
+  }
+  
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    .header {
+    height: 100vh;
+  }
+
+  .head-title {
+    position: relative;
+    /* margin-top: 10rem; */
+    top: 10rem;
+    font-size: 6rem;
+  }
+
+  .head-quote {
+    /* position: relative; */
+    margin-top: 12rem;
+    font-size: 1rem;
+  }
+  .scroll-quote{
+    margin-top: 11rem;
+  }
+  
 }

@@ -1,26 +1,33 @@
 import { useNavigate } from "react-router-dom";
-import Card from "./Card";
+import "../../styles/Voucher.css";
 
 export default function Vouchers() {
+  const navigate = useNavigate();
 
-     const navigate = useNavigate();
-
-     const handleBackClick = () => {
-       navigate("/account");
-     };
-    return (
-      <div className="vaucher-container">
-        <span className="btn-back" onClick={handleBackClick}>
-          &larr;
-        </span>
-        <Card class={"horisontal"} id="banner" />
-        <h1 className="section-title">Vouchers</h1>
-        <div className="cards-container">
-          <Card id="vouch-card" title={"01"} event={"1 free"} />
-          <Card id="vouch-card" title={"02"} event={"20%"} />
-          <Card id="vouch-card" title={"03"} event={"Half price"} />
-          <Card id="vouch-card" class={'used'} title={"used"} event={"2 for 1"} />
-        </div>
+  const handleBackClick = () => {
+    navigate("/user-home");
+  };
+  return (
+    <>
+      <span className="btn-back" onClick={handleBackClick}>
+        &larr;
+      </span>
+      <div className="landing-vouchers">
+        <div className="land-V-title">Vouchers</div>
+        <span className="down-arrow">&darr;</span>
       </div>
-    );
+      <div className="voucher one">
+        <h1 className="vouch-title">1 free drink</h1>
+        <button className="btn-vouch">USE</button>
+      </div>
+      <div className="voucher two">
+        <h1 className="vouch-title">50% <br/>on 1 drink</h1>
+        <button className="btn-vouch">USE</button>
+      </div>
+      <div className="voucher three one">
+        <h1 className="vouch-title used">1 free drink</h1>
+        <button className="btn-vouch">USE</button>
+      </div>
+    </>
+  );
 }

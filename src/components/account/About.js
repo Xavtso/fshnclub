@@ -7,7 +7,7 @@ export default function About(props) {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate("/account");
+    navigate("/");
   };
 
   return (

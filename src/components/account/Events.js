@@ -7,7 +7,7 @@ export default function Events() {
      const navigate = useNavigate();
 
      const handleBackClick = () => {
-       navigate("/account");
+       navigate("/user-home");
      };
   return (
       <div className="account-body">

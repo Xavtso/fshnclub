@@ -1,61 +1,97 @@
-.controls{
-    display: flex;
-    width: 50%;
-    justify-content: space-evenly;
-    /* border: 1px solid #fff; */
-    margin:0.5rem auto ;
-    gap: 1rem;
-}
-.btn-choose{
-    width: 10rem;
-    color: aliceblue;
-    background-color: rgba(128, 128, 128, 0.252);
-    border: 1px solid grey;
-    margin-left:auto ;
-}
-
-.btn-choose:hover{
-    background-color: #b1b1b19a;
-}
-
-.voucher-title{
-   font-size: 2.2rem;
-   scale: 1.5; 
-   text-align: center;
-}
-.alert{
-    font-size: 1.8rem;
+.landing-vouchers{
+    /* border: 1px solid; */
+    height: 100vh;
     text-align: center;
-    /* margin:auto 2rem; */
-    translate: -50%,50%;
+    background-image: url(../images/wood01.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
 }
-.alert-container{
-    /* border: 1px solid; */
-text-align: center;
-}
-.explaining{
-    font-size: 1.4rem;
-    color: rgb(174, 173, 173);
+
+.land-V-title{
+    position: relative;
+    font-weight: 900;
+    
+    font-size: 7rem;
+    text-shadow: 0px 4px 2px #222;
 }
 
-.used{
-    filter:grayscale(70%) ;
-    -webkit-filter:grayscale(70%) ;
+.down-arrow{
+    position: relative;
+    bottom: 0;
+    font-weight: 900;
+    font-size: 4rem;
+    top: 20%;
+    animation: arrow 1s infinite alternate;
+    -webkit-animation: arrow 1s infinite alternate;
 }
 
-.used-info{
-    margin: 6rem auto;
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius:0.5rem ;
-    box-shadow: 0px 0px 3px 2px rgb(160, 160, 160);
-    width: 50%;
+@keyframes arrow {
+    from{
+        translate: 0, 0;
+    }
+    to{
+        transform: translateY(3rem);
+        -webkit-transform: translateY(3rem);
+        -moz-transform: translateY(3rem);
+        -ms-transform: translateY(3rem);
+        -o-transform: translateY(3rem);
+    }
+}
+
+.voucher{
     text-align: center;
-    background-color: rgba(134, 134, 134, 0.708);
-    -webkit-border-radius:0.5rem ;
-    -moz-border-radius:0.5rem ;
-    -ms-border-radius:0.5rem ;
-    -o-border-radius:0.5rem ;
+    margin: 1rem;
+    height: 70vh;
+    width: 70%;
+    margin-inline: auto;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    box-shadow: 0px 2px 4px 1px grey;
+    text-shadow: 0px 4px 2px #222;
+}
+
+.btn-vouch{
+    position: relative;
+    top: 40%;
+    width: 15rem;
+    border-radius: 1.5rem;
+    border: 0.3rem solid #fff;
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    -ms-border-radius: 1.5rem;
+    -o-border-radius: 1.5rem;
+    background: none;
+    color: #fff;
+    box-shadow: #fff 0px 0px 5px 2px;
+    margin-inline: auto;
+}
+.btn-vouch:hover{
+    background-color: #ffffff17;
+}
+
+.vouch-title{
+    position: relative;
+    text-transform: uppercase;
+    top: 25%;
+    font-size: 4rem;
+}
+
+.one{
+    background-image: url(../images/wood02.png);
+    background-size: cover;
+    background-position: center;
+}
+.two{
+    background-image: url(../images/wood03.png);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 0.5rem;
 }

@@ -1,70 +1,63 @@
 .custom-button {
   position: relative;
-  width: 40rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 30rem;
+  border-radius: 1.5rem;
   font-size: 2.5rem;
   font-weight: 600;
   height: 5rem;
-  top: 80%;
-  border: 2px solid #d2b56d;
-  color: antiquewhite;
+  top: 70%;
+  margin:0rem auto;
+  border: 3px solid #d9d8d8;
+  color: #f6f4f4;
   z-index: 2;
-  background-color: #d2b56d78;
+  text-shadow: 0px 4px 2px #222;
+  background-color:transparent ;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   cursor: pointer;
+  background-color: #4f4e4e88;
   box-shadow: #4f4e4e 0px 0px 5px 2px ;
-  
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
 }
 
 .btn-left{
-    right: 35%;
+    right: 10%;
 }
 .center{
     width: 100%;
-    right: 20%;
+    /* right: 20%; */
 }
 
 
 
 .custom-button:hover {
-  background-color: #d2b56d44;
-  box-shadow: #d2b56d 0px 0px 5px 2px ;
+  background-color: #68666144;
+  box-shadow: #fff 0px 0px 5px 2px ;
 }
 
 
 @media (max-width: 320px) {
   .custom-button {
-    width: 90%;
+    width: 70%;
     top: 75%;
-    left: -20%;
     height: 3rem;
     padding: 0rem 1rem;
     font-size: 0.9rem;
-   
+   left: 0;
 }
 
-  .btn-left{
-    left: -30%;
-  }
-  .center {
-    right: 0;
-  }
+  
   
 }
 
 @media (min-width: 321px) and (max-width: 375px) {
   .custom-button {
-    width: 100%;
+    width: 60%;
     font-size: 2.2rem;
-  }
-
-  .btn-left,
-  .center {
-    right: 0;
+    left: 0;
   }
 
   
@@ -72,40 +65,30 @@
 
 @media (min-width: 375px) and (max-width: 425px) {
   .custom-button {
-    width: 100%;
+    width: 65%;
     padding: 0.1rem 0.8rem;
     top: 80%;
-    font-size: 1rem;
+    font-size: 1.5rem;
     height: 3.5rem;
-    left: -30%;
+
   }
 
-  .btn-left,
-  .center {
-    right: 0;
-  }
+
   
 }
 
 @media (min-width: 425px) and (max-width: 768px) {
     .custom-button {
-        width: 80%;
+        width: 70%;
         padding: 0.1rem 0.8rem;
         top: 80%;
-        font-size: 1.1rem;
+        font-size: 1.8rem;
         height: 4rem;
-        left: -10%;
+        
     }
    
 
-  .btn-left {
-    right: -50%;
-  }
 
-  .center {
-    width: 100%;
-    right: 15%;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -114,12 +97,5 @@
     bottom: -65%;
   }
 
-  .btn-left {
-    right: 50%;
-  }
 
-  .center {
-    width: 100%;
-    right: 10%;
-  }
 }

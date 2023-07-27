@@ -43,19 +43,24 @@ left: 50%;
 
 @media (max-width: 320px) {
     .quadRangle {
-        width: 10rem;
-        ;
-        left: 7%;
+        /* border: 1px solid; */
+        /* width: 10rem; */
+        width: 150%;
+        /* left: 7%; */
+        background-size: 250%;
+        background-repeat: no-repeat;
+        
+        background-position: center ;
        
 }
 
     
 .right{
-    /* left: 50%; */
+    left: 44%;
 }
 
     .individual {
-        left: 50%;
+        left: 44%;
        
 }
 }

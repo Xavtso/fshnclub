@@ -9,7 +9,7 @@ export default function Contact(props) {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate("/account");
+    navigate("/");
   };
 
   return (

@@ -15,8 +15,10 @@ export default function Header() {
           <span className="btn-back" onClick={handleBackClick}>
             &larr;
           </span>
-          <h1 className="head-title">FSHN</h1>
-          <h2 className="head-quote"> very important members' club</h2>
+          <div className="head-title">FSHN</div>
+          <div className="head-quote"> very important members' club</div>
+          <p className='scroll-quote'>Scroll to see <br />all your benefits</p>
+          <span className='land-arrow'>&darr;</span>
         </div>
       </>
     );

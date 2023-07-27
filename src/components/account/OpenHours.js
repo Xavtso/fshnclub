@@ -8,7 +8,7 @@ export default function OpenHours(props) {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate("/account");
+    navigate("/user-home");
   };
 
   return (

@@ -1,24 +1,17 @@
 // import package from './DSCN4532_r-scaled.jpg';
 import "../../styles/Slides.css";
-import QuadRangleRight from "../QuadRangleRight";
-import packageImg from "../../images/DSCN4532_r-scaled.jpg";
-import Button from "../Button";
 import "../../styles/Button.css";
-import { ReactComponent as QuadLeft } from "../../images/QuadLeft.svg";
+import { useNavigate } from "react-router-dom";
 export default function SlideOne(props) {
+  const navigateTo = useNavigate();
+  const navigate = function () {
+    navigateTo("/vouchers");
+  };
+
   return (
-    <div className="slide">
-      {/* <QuadLeft className="quadLeft"/> */}
-      <QuadRangleRight class={props.class} />
-      <h1 className=" title first-title">
-        VOUCHERS
-      </h1>
-      <Button side={props.btnSide} text={"See my vouchers"} />
-      <img
-        className={`images ${props.side}`}
-        src={packageImg}
-        alt="package"
-      ></img>
+    <div className="slide slide-vouchers">
+      <h1 className=" title first-title">VOUCHERS</h1>
+      <button className="custom-button btn-left" onClick={navigate} > See More</button>
     </div>
   );
 }

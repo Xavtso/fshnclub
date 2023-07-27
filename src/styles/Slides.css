@@ -1,148 +1,169 @@
-.images{
-    position: absolute;
-    height: 100%;
-    width: 75%;
-    z-index:-1;
-    left: 25%;
-
+.images {
+  position: absolute;
+  height: 100%;
+  width: 75%;
+  z-index: -1;
+  left: 25%;
 }
-.left{
-    left:0
-}
-
-.slide{
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    margin-top: 0rem;
+.left {
+  left: 0;
 }
 
-.title{
-    text-shadow: 0px 3px 2px #4b4b4b;
-    margin-top: 5rem;
-    position: absolute;
-    color: #fff;
-    z-index: 2;
-    font-size: 5.2rem;
-    padding:1rem 2rem ;
-    
-    /* border: 1px solid; */
-    width: 100%;
-    text-align: left;    
+.slide {
+  background-image: url(../images/wood01.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  margin: 1rem auto;
+  border-radius:1rem ;
+  -webkit-border-radius:1rem ;
+  -moz-border-radius:1rem ;
+  -ms-border-radius:1rem ;
+  -o-border-radius:1rem ;
+}
+.slide-vouchers {
+  background-image: url(../images/Firefly\ many\ gift\ voucher\ for\ the\ pub\ is\ on\ the\ blackwood\ table\ in\ the\ pub\,black\ vouchers\ designed\ l.jpg);
+}
+.slide-events {
+  background-image: url(../images/Firefly\ photo\ strong\ dark\ blured\,people\ slow\ dancing\,\ warm\ light\ \,\ i\ look\ at\ all\ this\ far\ away\,littl.jpg);
+}
+.slide-hours {
+    background-image: url(../images/istockphoto-1430548737-612x612.jpg);
+    filter:blur(50%) ;
+    -webkit-filter:blur(70%) ;
+}
+.title {
+  text-shadow: 0px 4px 2px #222;
+  margin-top: 5rem;
+  position: absolute;
+  color: #fff;
+  z-index: 2;
+  font-size: 5.2rem;
+  padding: 1rem 2rem;
+
+  /* border: 1px solid; */
+  width: 100%;
+  text-align: right;
+  right: 10%;
 }
 
-.title-right{
-    text-align: right;
-    left: -10%;
-    
+.title-right {
+  text-align: right;
+  left: -10%;
 }
 
 @media (max-width: 320px) {
-    .slide{
-        height: 65vh;
-        width: 100%;
-    }
-    .images {
-        width: 80%;
-        height: 65vh;
-        left: 40%;
-    }
-    .left{
-        left: 0;
-    }
+  .slide {
+    height: 65vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+ 
+ 
 
-    .title {
-        font-size: 2rem;
-        margin-top: 20%;
-    }
+  .title {
+    width: 60%;
+    font-size: 2rem;
+    margin-top: 20%;
+    left: 0;
+    margin-right:auto ;
+    padding:1rem ;
+ 
+    text-align: left;
+    right: 0;
+}
 
-    .title-right {
-        margin-top: 30%;
-        left: -15%;
-    }
+  .title-right {
+    margin-top: 30%;
+    /* left: -15%; */
+  }
 }
 
 @media (min-width: 321px) and (max-width: 376px) {
-    .slide{
-        height: 80vh;
-    }
-    .images {
-        width: 75%;
-        left: 25%;
-        height: 80vh;
-    }
+  .slide {
+    height: 70vh;
+  }
+  
 
-    .left{
-        left: 0;
-    }
+  .title {
+    width: 60%;
+    font-size: 2rem;
+    margin-top: 20%;
+    left: 0;
+    margin-right:auto ;
+    padding:1rem ;
 
-    .title {
-        font-size: 2.2rem;
-        /* left: 10%; */
-        margin-top: 40%;
-    }
+    text-align: left;
+    right: 0;
+  }
 
-    .title-right {
-        margin-top: 45%;
-        left: -15%;
-    }
+  
 }
 
 @media (min-width: 376px) and (max-width: 426px) {
-    .images {
-        width: 75%;
-        left: 30%;
-    }
+.slide{
+    height: 80vh;
+}
 
-    .left{
-        left: 0;
-    }
-
-    .title {
-        font-size: 3.2rem;
-        /* left: 5%; */
-        margin-top: 30%;
-    }
+  .title {
+    width: 60%;
+    font-size: 2.2rem;
+    margin-top: 20%;
+    left: 0;
+    margin-right:auto ;
+    padding:1rem ;
     
-    .title-right {
-        left: -15%;
-    }
+    text-align: left;
+    right: 0;
+  }
+
+  
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
-    .images {
-        width: 70%;
-        left: 30.5%;
-    }
-    .left{
-        left: 0;
-    }
+  .images {
+    width: 70%;
+    left: 30.5%;
+  }
+  .left {
+    left: 0;
+  }
 
-    .title {
-        font-size: 5rem;
-        left: 2%;
-    }
+  .title {
+    font-size: 5rem;
+    left: 2%;
+  }
 
-    .title-right {
-        left: -15%;
-    }
+  .title-right {
+    left: -15%;
+  }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-    .images {
-        width: 75%;
-        left: 25.5%;
-    }
-    .left{
-        left: 0;
-    }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .images {
+    width: 75%;
+    left: 25.5%;
+  }
+  .left {
+    left: 0;
+  }
 
-    .title {
-        font-size: 5.2rem;
-        
-    }
+  .title {
+    width: 80%;
+    font-size: 5rem;
+    margin-top: 10%;
+    left: 0;
+    margin-right:auto ;
+    padding:1rem ;
+ 
+    text-align: left;
+    right: 0;
+  }
 
-    .title-right {
-        left: -15%;
-    }
+  .title-right {
+    /* left: -15%; */
+  }
 }
