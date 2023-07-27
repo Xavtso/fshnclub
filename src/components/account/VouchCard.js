@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "./Card";
-import "../../styles/Card.css";
-import "../../styles/Features.css";
-import "../../styles/Voucher.css";
+import '../../styles/VoucherCard.css'
 
 export default function VouchCard(props) {
   const navigate = useNavigate();
@@ -20,12 +17,12 @@ export default function VouchCard(props) {
   };
 
   return (
-    <div>
+    <div className="voucher-card">
       <span className="btn-back" onClick={handleBackClick}>
         &larr;
       </span>
-      <Card class={"horisontal"} />
-      <h1 className="voucher-title">1 FREE</h1>
+      
+      <div className="card-title">1 FREE</div>
       {!used ? (
         <div className="alert-container">
           <span className="alert">Are you sure ?</span>

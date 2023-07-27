@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "./Card";
-import "../../styles/Card.css";
+
+import '../../styles/Features.css'
 
 export default function About(props) {
   const navigate = useNavigate();
@@ -11,18 +11,15 @@ export default function About(props) {
   };
 
   return (
-    <div>
+    <div className="landing-about">
       <span className="btn-back" onClick={handleBackClick}>
         &larr;
       </span>
-      <Card class={"horisontal"} />
-      <h1 className="section-title">About</h1>
-      <p className="text-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        vitae risus et libero varius pharetra. Etiam at massa nec dui
-        pellentesque congue sed eget elit. Fusce ipsum enim, sodales ut
-        pellentesque vel, imperdiet sodales lectus. Duis maximus porta quam, ut
-        vehicula erat euismod at.
+      <h1 className="section-title about-title">About Us</h1>
+      <p className="about-content">
+        About us? There is nothing to tell here. You have never seen better
+        company in your life. Drag your ass here and spend as much money as
+        possible if you want to be in a good mood and all your teeth
       </p>
     </div>
   );

@@ -1,26 +1,34 @@
-import Card from './Card';
-import "../../styles/Account.css";
-import "../../styles/Features.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import "../../styles/Voucher.css";
 
 export default function Events() {
-     const navigate = useNavigate();
+  const navigate = useNavigate();
 
-     const handleBackClick = () => {
-       navigate("/user-home");
-     };
+  const handleBackClick = () => {
+    navigate("/user-home");
+  };
+
   return (
-      <div className="account-body">
-          <span className='btn-back' onClick={handleBackClick}>&larr;</span>
-  
-          <Card class={"horisontal"} title={'Banner' } />
-      <h2 className="section-label">Events</h2>
-      <div className="cards-container">
-        <Card id='hours'  title={"01.08" }event={'Event Name'}  />
-        <Card id='hours' title={"08.08"} event={'Event Name'} />
-        <Card id='hours'  title={"27.08"} event={'Event Name'}  />
-        <Card id='hours'  title={"10.09"} event={'Event Name'} />
+    <>
+      <span className="btn-back" onClick={handleBackClick}>
+        &larr;
+      </span>
+      <div className="landing-events">
+        <div className="land-V-title">Events</div>
+        <span className="down-arrow">&darr;</span>
       </div>
-    </div>
+      <div className="event one">
+        <h1 className="event-title">Sports day</h1>
+        <p className="date">04.08.23</p>
+      </div>
+      <div className="event two">
+        <h1 className="event-title">Disco Party</h1>
+        <p className="date">06.08.23</p>
+      </div>
+      <div className="event three one">
+        <h1 className="event-title used">Singer Evening</h1>
+        <p className="date">08.08.23</p>
+      </div>
+    </>
   );
 }

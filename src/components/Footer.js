@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Youtube } from "iconsax-react";
-import '../styles/Footer.css';
+// import '../styles/Footer.css';
 
 export default function Footer() {
     return (
