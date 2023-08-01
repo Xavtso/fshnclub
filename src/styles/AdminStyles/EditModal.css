@@ -1,0 +1,128 @@
+.modal-container{
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    /* left:  auto; */
+    margin-left: 0rem;
+    width: 75%;
+    height: 100vh;
+    max-width:100%;
+    background-color: #0000007c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content{
+width: 30%;
+margin-inline:auto ;
+background-color: #444654;
+border: none;
+}
+
+.editSubmit-btn{
+    background-color: #19C37D;
+    color: #fff;
+    width: 40%;
+}
+
+.editSubmit-btn:hover{
+    box-shadow:#222 0px 0px 4px 0.5px  ;
+    background-color: #1ed589;
+}
+.declineEdit-btn:hover{
+    box-shadow:#222 0px 0px 4px 0.5px  ;
+    background-color: #f04453;
+}
+
+.declineEdit-btn{
+    width: 40%;
+    color: #fff;
+    background-color: #F22C3D;
+}
+
+.modal-title{
+    text-align: center;
+}
+
+.modal-controls{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.edit-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: left;
+    text-align: left;
+    /* align-items:stretch; */
+}
+
+.name-label,.birth-label,.phone-label,.role-label{
+
+    margin:0rem ;
+    margin-right:auto ;
+}
+
+.input-group{
+    /* border: 1px solid; */
+    /* border: 1px solid; */
+    display:  flex;
+    /* text-align: left; */
+    gap: 0.5rem;
+    align-items:center;
+    /* justify-content: left; */
+    padding: 0.5rem 0.5rem;
+}
+
+
+.name-input,.phone-input{
+    background-color: #444654;
+    width: 50%;
+    border: none;
+    text-align: center;
+    border-bottom:1px solid ;
+    color: #fff;
+    caret-color: #fff;
+    font-size:1rem ;
+}
+.role-input{
+    background-color: #444654;
+    border: none;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    padding: 5px;
+    color: #fff;
+    background-color: #65687a;
+    box-shadow:#222 0px 0px 4px 0.5px  ;
+    cursor: pointer;
+}
+
+.birth-input{
+    background-color: #65687a;
+    border: none;
+    box-shadow:#222 0px 0px 4px 0.5px  ;
+    cursor: text;
+    color: #fff;
+}
+
+::-webkit-calendar-picker-indicator{
+    background-color: #7c82a5;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+
+
+

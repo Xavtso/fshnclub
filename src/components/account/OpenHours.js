@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../../styles/Card.css";
 import "../../styles/Features.css";
 
 export default function OpenHours(props) {
