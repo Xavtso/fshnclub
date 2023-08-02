@@ -2,6 +2,7 @@ import { CloseCircle, TickCircle, User } from "iconsax-react";
 import "../../styles/AdminStyles/Layouts.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import NotFound from "./NotFound";
 
 export default function Candidates() {
   const [candidates, setCandidates] = useState([]);
@@ -9,7 +10,7 @@ export default function Candidates() {
 
     const showCandidates = function () {
         axios
-          .get("http://localhost:5000/users/candidates")
+          .get("https://woodymember-server.azurewebsites.net/users/candidates")
           .then((response) => setCandidates(response.data))
           .catch((error) => console.log(error));
     
@@ -22,9 +23,8 @@ export default function Candidates() {
 
   const handleApproveCandidate = function (id) {
     axios
-      .post("http://localhost:5000/users/approve", {
-          id: id,
-          
+      .post("https://woodymember-server.azurewebsites.net/users/approve", {
+        id: id,
       })
       .then((response) => response && showCandidates())
       .catch((error) => console.log(error));
@@ -32,7 +32,7 @@ export default function Candidates() {
     
     const handleDeclineCandidate = function (id) {
         axios
-          .post("http://localhost:5000/users/decline", {
+          .post("https://woodymember-server.azurewebsites.net/users/decline", {
             id: id,
           })
           .then((response) => response && showCandidates())
@@ -43,7 +43,7 @@ export default function Candidates() {
     <div className="layout">
       <h1 className="layout-title">Candidates</h1>
       <div className="candidates-container">
-        {candidates.map((candidate) => (
+        {candidates.length === 0 ? <NotFound/>  : candidates.map((candidate) => (
           <div id={candidate.id} className="candidate">
             <div className="info">
               <User />
