@@ -60,7 +60,7 @@ export default function VouchersAdmin() {
   const handleDeleteVoucher = function () {
     console.log(targetId);
     axios
-      .post("http://localhost:5000/vouchers/delete", {
+      .post("https://woodymember-server.azurewebsites.net/vouchers/delete", {
         id: targetId,
       })
       .then((response) => {

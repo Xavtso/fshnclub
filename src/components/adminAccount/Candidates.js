@@ -44,7 +44,7 @@ export default function Candidates() {
       <h1 className="layout-title">Candidates</h1>
       <div className="candidates-container">
         {candidates.length === 0 ? <NotFound/>  : candidates.map((candidate) => (
-          <div id={candidate.id} className="candidate">
+          <div id={candidate.id} key={candidate.id} className="candidate">
             <div className="info">
               <User />
               <p className="name">{candidate.name}</p>
