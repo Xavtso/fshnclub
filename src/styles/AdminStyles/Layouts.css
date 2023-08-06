@@ -8,12 +8,13 @@
   font-weight: 600;
   font-size: 2.5rem;
 }
-
+/* User / Candidates */
+/* /////////////////////////////////////////// */
 .candidates-container {
   /* border: 1px solid; */
-  box-shadow: 0px 0px 10px 1px #646363;
+  /* box-shadow: 0px 0px 10px 1px #646363; */
   width: 70%;
-  margin: 5rem auto;
+  margin: 0rem auto;
   padding: 0.5rem;
   border-radius: 0.8rem;
   height: 70%;
@@ -93,7 +94,7 @@
   background-color: #444654;
 }
 
-.users-container{
+.users-container {
   text-align: center;
   width: 50%;
   padding: 0.5rem 0rem;
@@ -108,10 +109,9 @@
   -o-border-radius: 1rem;
   background-color: #202123;
   box-shadow: 0px 0px 10px 1px #433f3f;
-
 }
 
-.vouchEdition{
+.vouchEdition {
   box-shadow: 0px 0px 10px 1px #646363;
   width: 90%;
   margin: 0rem auto;
@@ -128,8 +128,68 @@
   background-color: #202123;
 }
 
+.filter-container {
+  /*border: 1px solid;
+  */
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  background-color: #202123;
+  height: 4rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.search-container {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
 
+  justify-content: space-around;
+}
+.search-input {
+  width: 90%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #e7e7e7;
+  color: gray;
+}
 
+.search-title {
+  font-size: 1.2rem;
+  text-align: left;
+}
+.filterOrSort-containers {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.filter-title {
+  font-size: 1.2rem;
+}
+.filter-select {
+  background-color: #444654;
+  color: #fff;
+  border: none;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  font-size: 1rem;
+}
+.filter-option {
+  border-bottom: 1px solid gray;
+}
 
 /* //////////////////////////////////////////////////////// */
 /* Events */
@@ -227,12 +287,12 @@
   overflow-y: auto;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   background-color: #65687b;
   color: #19c37d;
   width: 10px;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #7688aa;
   width: 15px;
   border-radius: 1rem;
@@ -244,18 +304,18 @@
   -o-border-radius: 1rem;
 }
 
-.createEvent-btn{
+.createEvent-btn {
   background-color: #19c37d;
   color: #fff;
   width: 50%;
   max-height: 3rem;
 }
 
-.createEvent-btn:hover{
+.createEvent-btn:hover {
   background-color: #1ed589;
 }
 
-.event-block{
+.event-block {
   /* border: 1px solid; */
   box-shadow: 0px 1px 4px 1px #222;
   border-radius: 1rem;
@@ -264,32 +324,33 @@
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
   width: 95%;
-  margin:0.2rem auto ;
+  margin: 0.2rem auto;
   background-color: #65687b;
 }
-.event-li-title{
+.event-li-title {
   display: block;
   position: relative;
   text-transform: capitalize;
   font-weight: 600;
-  top:0.5rem ;
+  top: 0.5rem;
   /* border: 1px solid; */
   width: fit-content;
-  margin-inline:auto ;
+  margin-inline: auto;
   font-size: 1.6rem;
 }
-.date-block{
+.date-block {
   /* border: 1px solid; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 1rem;
-  padding:0.5rem ;
+  padding: 0.5rem;
 }
 
-.date-container{
+.date-container {
   /*border: 1px solid;
-  */padding: 0rem 0.5rem;
+  */
+  padding: 0rem 0.5rem;
   border-radius: 0.8rem;
   -webkit-border-radius: 0.8rem;
   -moz-border-radius: 0.8rem;
@@ -301,34 +362,35 @@
   align-items: center;
   gap: 0.8rem;
 }
-.exp{
+.exp {
   background-color: #f22c3d77;
 }
 
-.date-label{
+.date-label {
   font-weight: 600;
   font-size: 1rem;
 }
-.date-value{
+.date-value {
   font-weight: 600;
   font-size: 1rem;
 }
 
-.removeEvent{
+.removeEvent {
   color: red;
   cursor: pointer;
-  position:relative;
+  position: relative;
   top: 0.5rem;
   /* right: 0; */
   float: right;
   translate: -30%;
 }
-
-.hidden{
+/* //////////////////////// */
+/* Agree Modal */
+.hidden {
   display: none;
 }
 
-.overflow{
+.overflow {
   position: absolute;
   width: 75%;
   height: 100vh;
@@ -339,7 +401,7 @@
   justify-content: center;
 }
 
-.agreeModal{
+.agreeModal {
   border: 0px solid;
   width: 30%;
   text-align: center;
@@ -353,37 +415,39 @@
   box-shadow: 0px 0px 10px 1px #222;
 }
 
-.agree-controls{
+.agree-controls {
   display: flex;
   gap: 1rem;
 }
 
-
-.agree-btn,.disagree-btn{
+.agree-btn,
+.disagree-btn {
   width: 40%;
   color: #fff;
   font-size: 1rem;
 }
 
-.agree-btn{
+.agree-btn {
   background-color: #19c37d;
 }
-.disagree-btn{
+.disagree-btn {
   background-color: #f22c3d;
 }
 
-.disagree-btn:hover{
+.disagree-btn:hover {
   background-color: #f04453;
 }
-.agree-btn:hover{
+.agree-btn:hover {
   background-color: #1ed589;
 }
+/* ///////////////////////////////////// */
+/* Vouchers */
 
-.active{
+.active {
   background-color: #19c37d;
 }
 
-.vouchers-form{
+.vouchers-form {
   box-shadow: 0px 0px 10px 1px #433f3f;
   width: 40%;
   height: 55%;
@@ -395,8 +459,68 @@
   background-color: #202123;
 }
 
-.createVouchers-layout{
+.createVouchers-layout {
   display: flex;
   /* align-items: center; */
   justify-content: space-evenly;
+}
+
+
+@media(max-width:320px){
+    .layout{
+      width: 90%;
+      /* border: 1px solid; */
+    }
+    .layout-title{
+      font-size: 1.4rem;
+    }
+
+    .candidates-container{
+    width: 90%;
+    height: 60%;
+    margin:0 auto ;
+  }
+  .candidate{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 90%;
+    /* gap: -1rem; */
+    height:4rem ;
+  
+
+  }
+  .user-li-icon{
+    display: none;
+  }
+  .name{
+    font-size: 1.2rem;
+  }
+  .user-number{
+    font-size: 1rem;
+
+  }
+  .info{
+    position: relative;
+    bottom: -0.5rem;
+    width: 100%;
+    /* border: 1px solid; */
+    height: fit-content;
+    padding: 0;
+    margin: -0.8rem auto;
+    
+    
+  }
+  .action-btn{
+    font-size: 0.5rem;
+    scale: 0.7;
+    position: relative;
+    /* top: -1rem; */
+    /* margin-bottom: 3rem; */
+
+  }
+
+  .filter-container{
+    border: 1px solid;
+  }
+
 }

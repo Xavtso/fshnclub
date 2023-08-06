@@ -57,9 +57,10 @@ export default function VouchersAdmin() {
     showActiveVouchers();
   }
 
-  const handleDeleteEvent = function () {
+  const handleDeleteVoucher = function () {
+    console.log(targetId);
     axios
-      .post("https://woodymember-server.azurewebsites.net/events/delete", {
+      .post("http://localhost:5000/vouchers/delete", {
         id: targetId,
       })
       .then((response) => {
@@ -110,7 +111,7 @@ export default function VouchersAdmin() {
       </div>
       {agreeModal && (
         <AgreeModal
-          onAgree={handleDeleteEvent}
+          onAgree={handleDeleteVoucher}
           onDisagree={handleAgreeModalOpen}
         />
       )}

@@ -15,6 +15,7 @@
     overflow: hidden;
     background-color: #343541;
     display: flex;
+    
 }
 
 .admin-logo{
@@ -74,4 +75,52 @@
     color: #fff;
     cursor: pointer;
     background-color: #444654;
+}
+
+@media (max-width: 750px) {
+  .sidebar {
+    width: 2.5rem;
+    padding: 0;
+  }
+  .adminBody{
+    height: 100vh;
+  }
+
+  .admin-logo {
+    width: 5rem;
+    height: 5rem;
+    display: none;
+  }
+
+  .sayHello {
+    display: none;
+  }
+
+  .sideNav {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0rem auto;
+  }
+
+  .list-item {
+    width: auto;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    text-shadow: none;
+    box-shadow: none;
+    /*color: #202123;
+    */content:icon;
+    width: 1.5rem;
+    text-align: center;
+    border-radius: 0.4rem;
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    -ms-border-radius: 0.4rem;
+    -o-border-radius: 0.4rem;
+}
+
+  
 }

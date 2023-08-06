@@ -1,29 +1,40 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import '../../styles/VoucherCard.css'
+import React, { useState, useEffect } from "react";
+
+import "../../styles/VoucherCard.css";
+import axios from "axios";
 
 export default function VouchCard(props) {
-  const navigate = useNavigate();
-  const [used, setUsed] = useState(false);
   const [usedDate, setUsedDate] = useState(null);
+  const [voucher, setVoucher] = useState(null);
 
   const handleBackClick = () => {
-    navigate("/vouchers");
+    props.onClose();
   };
 
   const handleYesClick = () => {
-    setUsed(true);
+    axios
+      .post("`https://woodymember-server.azurewebsites.net/vouchers/use", {
+        id: voucher.id,
+      })
+      .then((response) => response && setUsedDate(new Date()))
+      .catch((error) => console.log(error));
+
     setUsedDate(new Date().toLocaleDateString());
   };
+
+  useEffect(() => {
+    setVoucher(props.data);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="voucher-card">
       <span className="btn-back" onClick={handleBackClick}>
         &larr;
       </span>
-      
-      <div className="card-title">1 FREE</div>
-      {!used ? (
+
+      <div className="card-title">{voucher.title}</div>
+      {voucher.used ? (
         <div className="alert-container">
           <span className="alert">Are you sure ?</span>
           <p className="explaining">
