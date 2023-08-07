@@ -18,7 +18,7 @@ export default function Vouchers() {
   const showVouchers = function () {
     const id = localStorage.getItem("id");
     axios
-      .get(`http://localhost:5000/vouchers/${id}`)
+      .get(`https://woodymember-server.azurewebsites.net/vouchers/${id}`)
       .then((response) => setVouchers(response.data?.reverse()))
       .catch((error) => console.log(error));
   };
