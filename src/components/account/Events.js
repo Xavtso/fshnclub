@@ -17,6 +17,18 @@ export default function Events() {
       .catch((error) => console.log(error));
   };
 
+
+  function formatDate(dateString) {
+    const date = new Date(dateString)
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
+
+    return `${formattedDay}.${formattedMonth}`;
+  }
+
   useEffect(() => {
     getEvents();
   }, []);
@@ -33,21 +45,10 @@ export default function Events() {
       {events.map((event) => (
         <div className="event one" key={event.id}>
           <h1 className="event-title">{event.title}</h1>
-          <p className="date">{event.start_date}</p>
+          <p className="date">{`${formatDate(event.start_date)} - ${formatDate(event.expire_date)}`}</p>
         </div>
       ))}
-      {/* <div className="event one">
-        <h1 className="event-title">Sports day</h1>
-        <p className="date">04.08.23</p>
-      </div>
-      <div className="event two">
-        <h1 className="event-title">Disco Party</h1>
-        <p className="date">06.08.23</p>
-      </div>
-      <div className="event three one">
-        <h1 className="event-title used">Singer Evening</h1>
-        <p className="date">08.08.23</p>
-      </div> */}
+    
     </>
   );
 }

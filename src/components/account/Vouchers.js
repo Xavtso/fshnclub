@@ -18,15 +18,19 @@ export default function Vouchers() {
   const showVouchers = function () {
     const id = localStorage.getItem("id");
     axios
-      .get(`https://woodymember-server.azurewebsites.net/vouchers/${id}`)
+      .get(`http://localhost:5000/vouchers/${id}`)
       .then((response) => setVouchers(response.data?.reverse()))
       .catch((error) => console.log(error));
-    
   };
   useEffect(() => {
     showVouchers();
     // eslint-disable-next-line
   }, []);
+
+  const handleClose = function () {
+    setShowModal(!showModal);
+    showVouchers();
+  };
 
   return (
     <>
@@ -40,7 +44,8 @@ export default function Vouchers() {
       {vouchers.map((voucher) => (
         <div key={voucher.id} id={voucher.id} className="voucher one">
           <div className={voucher.ifUsed ? "usedVoucher" : "hidden"}>
-            <p className="usedVoucher-title">Used</p></div>
+            <p className="usedVoucher-title">Used</p>
+          </div>
           <h1 className="vouch-title">{voucher.title}</h1>
           <button
             className="btn-vouch"
@@ -56,10 +61,7 @@ export default function Vouchers() {
 
       {showModal &&
         createPortal(
-          <VouchCard
-            data={selectedVoucher}
-            onClose={() => setShowModal(!showModal)}
-          />,
+          <VouchCard data={selectedVoucher} onClose={handleClose} />,
           document.body,
         )}
     </>

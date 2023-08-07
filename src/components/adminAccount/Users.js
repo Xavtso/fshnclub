@@ -5,7 +5,7 @@ import axios from "axios";
 import EditModal from "./EditModal";
 import AgreeModal from "./AgreeModal";
 import NotFound from "./NotFound";
-import { createEvent } from "@testing-library/react";
+
 import { createPortal } from "react-dom";
 
 export default function Users() {

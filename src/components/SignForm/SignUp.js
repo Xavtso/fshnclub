@@ -42,7 +42,6 @@ export default function SignUp({ onCloseModal }) {
     localStorage.setItem("id", id);
     localStorage.setItem("role", role);
     localStorage.setItem("name", name);
-    console.log(localStorage);
     role === "admin" ? navigateTo("/admin") : navigateTo("/user-home");
   };
 

@@ -4,7 +4,6 @@ import "../../styles/VoucherCard.css";
 import axios from "axios";
 
 export default function VouchCard(props) {
-  
   const [voucher, setVoucher] = useState([]);
 
   const handleBackClick = () => {
@@ -12,8 +11,6 @@ export default function VouchCard(props) {
   };
 
   const handleYesClick = () => {
-    
-
     axios
       .post("https://woodymember-server.azurewebsites.net/vouchers/use", {
         id: voucher.voucherId,
@@ -21,12 +18,10 @@ export default function VouchCard(props) {
       })
       .then((response) => response && handleBackClick())
       .catch((error) => console.log(error));
-
   };
 
   useEffect(() => {
     setVoucher(props.data);
-    console.log(props.data);
     // eslint-disable-next-line
   }, []);
 

@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "../styles/AdminStyles/AdminPage.css";
-import { CalendarAdd, Logout, LogoutCurve, Ticket, UserCirlceAdd, UserTick } from "iconsax-react";
+import { CalendarAdd, LogoutCurve, Ticket, UserCirlceAdd, UserTick } from "iconsax-react";
 import Candidates from "../components/adminAccount/Candidates";
 import EventsAdmin from "../components/adminAccount/EventsAdmin";
 import VouchersAdmin from "../components/adminAccount/VouchersAdmin";

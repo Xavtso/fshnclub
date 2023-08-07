@@ -14,7 +14,7 @@ export default function CreateVoucher(props) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [message, setMessage] = useState(null);
+  // const [message, setMessage] = useState(null);
 
   const showUsers = function () {
     axios
@@ -52,7 +52,7 @@ export default function CreateVoucher(props) {
   }
 
   const handleCandidateClick = function (userId) {
-    setMessage(null);
+
 
     // Вибираємо елемент зі відповідним userId
     const candidateElement = document.querySelector(
