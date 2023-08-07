@@ -4,6 +4,7 @@ import axios from "axios";
 import AgreeModal from "./AgreeModal";
 import { TicketExpired } from "iconsax-react";
 import CreateVoucher from "./CreateVouchers";
+import { createPortal } from "react-dom";
 
 export default function VouchersAdmin() {
   const [vouchers, setVouchers] = useState(null);
@@ -17,13 +18,14 @@ export default function VouchersAdmin() {
       .get("https://woodymember-server.azurewebsites.net/vouchers/all")
       .then((response) => setVouchers(response.data?.reverse()))
       .catch((error) => console.log(error));
+    
   };
 
   const datePrettier = function (dateString) {
     if (!dateString || dateString === undefined) {
       return ""; // Якщо строка не передана, повертаємо пустий рядок
     }
-
+  
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       return ""; // Якщо дата недійсна, повертаємо пустий рядок
@@ -109,11 +111,11 @@ export default function VouchersAdmin() {
           Create New
         </button>
       </div>
-      {agreeModal && (
+      {agreeModal && createPortal(
         <AgreeModal
           onAgree={handleDeleteVoucher}
           onDisagree={handleAgreeModalOpen}
-        />
+        />,document.body
       )}
       {modal && <CreateVoucher onClose={closeModal} />}
     </div>

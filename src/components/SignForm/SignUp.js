@@ -48,14 +48,15 @@ export default function SignUp({ onCloseModal }) {
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <div className="modal-widget">
         <span className="close" onClick={onCloseModal}>
           &times;
         </span>
         <h2>Registration</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
+        <form className="sign-form" onSubmit={handleSubmit}>
+          <label className="sign-label" htmlFor="name">Name:</label>
           <input
+            className="sign-input"
             type="text"
             id="name"
             name="name"
@@ -68,8 +69,9 @@ export default function SignUp({ onCloseModal }) {
             onChange={handleInputChange}
           />
 
-          <label htmlFor="phone">Phone Number:</label>
+          <label className="sign-label" htmlFor="phone">Phone Number:</label>
           <input
+            className="sign-input"
             type="tel"
             id="phone"
             name="phone"

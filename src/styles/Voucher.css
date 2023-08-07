@@ -12,6 +12,33 @@
     
 }
 
+.usedVoucher{
+    position: absolute;
+    /* border: 1px solid; */
+    width: 85%;
+    height: 70vh;
+    z-index: 1;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.526);
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.usedVoucher-title{
+    font-weight:600;
+    font-size:8rem ;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    rotate: -25deg;
+    scale: 1.5;
+    color: rgb(226, 71, 71);
+}
+
 .land-V-title{
     position: relative;
     font-weight: 900;

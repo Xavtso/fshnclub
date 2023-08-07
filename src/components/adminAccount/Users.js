@@ -5,6 +5,8 @@ import axios from "axios";
 import EditModal from "./EditModal";
 import AgreeModal from "./AgreeModal";
 import NotFound from "./NotFound";
+import { createEvent } from "@testing-library/react";
+import { createPortal } from "react-dom";
 
 export default function Users() {
   const [allUsers, setAllUsers] = useState([]);
@@ -197,11 +199,11 @@ export default function Users() {
         onSave={handleSaveUser}
         formData={targetUser}
       />
-      {agreeModal && (
+      {agreeModal && createPortal(
         <AgreeModal
           onAgree={handleDeleteUser}
           onDisagree={handleAgreeModalOpen}
-        />
+        />,document.body
       )}
     </div>
   );

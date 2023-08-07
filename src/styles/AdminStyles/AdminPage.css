@@ -58,6 +58,9 @@
     border-radius: 1.2rem;
     width: 90%;
     padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     /* color: #aba9a9; */
     text-align: left;
     letter-spacing: 1px;
@@ -76,6 +79,18 @@
     cursor: pointer;
     background-color: #444654;
 }
+
+@media(min-width: 755px) and (max-width:1025){
+    .list-item{
+        /* border: 1px solid; */
+        gap: 0.5rem;
+        font-size: 1rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
 
 @media (max-width: 750px) {
   .sidebar {

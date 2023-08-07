@@ -4,26 +4,29 @@ import "../../styles/VoucherCard.css";
 import axios from "axios";
 
 export default function VouchCard(props) {
-  const [usedDate, setUsedDate] = useState(null);
-  const [voucher, setVoucher] = useState(null);
+  
+  const [voucher, setVoucher] = useState([]);
 
   const handleBackClick = () => {
     props.onClose();
   };
 
   const handleYesClick = () => {
+    
+
     axios
-      .post("`https://woodymember-server.azurewebsites.net/vouchers/use", {
-        id: voucher.id,
+      .post("https://woodymember-server.azurewebsites.net/vouchers/use", {
+        id: voucher.voucherId,
+        user_id: voucher.userId,
       })
-      .then((response) => response && setUsedDate(new Date()))
+      .then((response) => response && handleBackClick())
       .catch((error) => console.log(error));
 
-    setUsedDate(new Date().toLocaleDateString());
   };
 
   useEffect(() => {
     setVoucher(props.data);
+    console.log(props.data);
     // eslint-disable-next-line
   }, []);
 
@@ -33,8 +36,10 @@ export default function VouchCard(props) {
         &larr;
       </span>
 
-      <div className="card-title">{voucher.title}</div>
-      {voucher.used ? (
+      <div className="card-title">{voucher?.title}</div>
+      {voucher?.ifUsed ? (
+        <div className="used-info">Used at {voucher.updatedAt}</div>
+      ) : (
         <div className="alert-container">
           <span className="alert">Are you sure ?</span>
           <p className="explaining">
@@ -49,8 +54,6 @@ export default function VouchCard(props) {
             </button>
           </div>
         </div>
-      ) : (
-        <div className="used-info">Used at {usedDate}</div>
       )}
     </div>
   );

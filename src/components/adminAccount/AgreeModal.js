@@ -9,7 +9,7 @@ export default function AgreeModal(props) {
   };
 
   return (
-    <div className="overflow">
+    <div className="overflow" onClick={handleDisagree}>
       <div className="agreeModal">
         <h1 className="agree-title">Are you sure ?</h1>
         <div className="agree-controls">

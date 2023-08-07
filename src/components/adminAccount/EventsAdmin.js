@@ -4,6 +4,7 @@ import axios from "axios";
 import { CalendarRemove } from "iconsax-react";
 import CreateEvent from "./CreateEvent";
 import AgreeModal from "./AgreeModal";
+import { createPortal } from "react-dom";
 
 export default function EventsAdmin() {
   const [events, setEvents] = useState(null);
@@ -108,11 +109,11 @@ export default function EventsAdmin() {
           Create New
         </button>
       </div>
-      {agreeModal && (
+      {agreeModal && createPortal(
         <AgreeModal
           onAgree={handleDeleteEvent}
           onDisagree={handleAgreeModalOpen}
-        />
+        />,document.body
       )}
       {modal && <CreateEvent onClose={closeModal} />}
     </div>

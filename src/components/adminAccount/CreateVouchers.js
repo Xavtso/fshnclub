@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import NotFound from "./NotFound";
 import "../../styles/AdminStyles/CheckBox.css";
 import AgreeModal from "./AgreeModal";
+import { createPortal } from "react-dom";
 
 export default function CreateVoucher(props) {
   const [users, setUsers] = useState([]);
@@ -194,11 +195,11 @@ export default function CreateVoucher(props) {
       </div>
       {/* {message && <p className="message">{message}</p>}
        */}
-      {agreeModal && (
+      {agreeModal && createPortal(
         <AgreeModal
           onAgree={handleFormSubmit}
           onDisagree={handleAgreeModalOpen}
-        />
+        />,document.body
       )}
     </div>
   );

@@ -3,22 +3,23 @@ import "../../styles/AdminStyles/Layouts.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NotFound from "./NotFound";
+import { createPortal } from "react-dom";
+import AgreeModal from "./AgreeModal";
 
 export default function Candidates() {
   const [candidates, setCandidates] = useState([]);
+  const [targetCandidate, setTargetCandidate] = useState(null);
+  const [agreeModal, setAgreeModal] = useState(false);
 
+  const showCandidates = function () {
+    axios
+      .get("https://woodymember-server.azurewebsites.net/users/candidates")
+      .then((response) => setCandidates(response.data))
+      .catch((error) => console.log(error));
+  };
 
-    const showCandidates = function () {
-        axios
-          .get("https://woodymember-server.azurewebsites.net/users/candidates")
-          .then((response) => setCandidates(response.data))
-          .catch((error) => console.log(error));
-    
-}
-    
-    useEffect(() => {
-        showCandidates()
-    
+  useEffect(() => {
+    showCandidates();
   }, []);
 
   const handleApproveCandidate = function (id) {
@@ -28,45 +29,59 @@ export default function Candidates() {
       })
       .then((response) => response && showCandidates())
       .catch((error) => console.log(error));
-    };
-    
-    const handleDeclineCandidate = function (id) {
-        axios
-          .post("https://woodymember-server.azurewebsites.net/users/decline", {
-            id: id,
-          })
-          .then((response) => response && showCandidates())
-          .catch((error) => console.log(error));
-    }
+  };
+
+  const handleDeclineCandidate = function () {
+    axios
+      .post("https://woodymember-server.azurewebsites.net/users/decline", {
+        id: targetCandidate,
+      })
+      .then((response) => response && showCandidates())
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="layout">
       <h1 className="layout-title">Candidates</h1>
       <div className="candidates-container">
-        {candidates.length === 0 ? <NotFound/>  : candidates.map((candidate) => (
-          <div id={candidate.id} key={candidate.id} className="candidate">
-            <div className="info">
-              <User />
-              <p className="name">{candidate.name}</p>
-              <span className="user-number">{candidate.phoneNumber}</span>
+        {candidates.length === 0 ? (
+          <NotFound />
+        ) : (
+          candidates.map((candidate) => (
+            <div id={candidate.id} key={candidate.id} className="candidate">
+              <div className="info">
+                <User />
+                <p className="name">{candidate.name}</p>
+                <span className="user-number">{candidate.phoneNumber}</span>
+              </div>
+              <div className="actions">
+                <TickCircle
+                  color="green"
+                  size={30}
+                  className="action-btn"
+                  onClick={() => handleApproveCandidate(candidate.id)}
+                />
+                <CloseCircle
+                  color=" red"
+                  size={30}
+                  className="action-btn"
+                  onClick={() => {
+                    setTargetCandidate(candidate.id);
+                    setAgreeModal(!agreeModal);
+                  }}
+                />
+              </div>
             </div>
-            <div className="actions">
-              <TickCircle
-                color="green"
-                size={30}
-                className="action-btn"
-                onClick={() => handleApproveCandidate(candidate.id)}
-              />
-              <CloseCircle
-                color=" red"
-                size={30}
-                className="action-btn"
-                onClick={() => handleDeclineCandidate(candidate.id)}
-              />
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
+      {agreeModal &&
+        createPortal(
+          <AgreeModal
+            onAgree={handleDeclineCandidate}
+            onDisagree={setAgreeModal(!agreeModal)}
+          />,
+        )}
     </div>
   );
 }

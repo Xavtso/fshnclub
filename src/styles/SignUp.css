@@ -9,15 +9,19 @@
   height: 100%;
   background-color: #0000008a; 
   overflow: -moz-hidden-unscrollable;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-content {
+.modal-widget {
   background-color: #4b4646;
-  margin: 15% auto;
+  margin: 50% auto;
   padding: 20px;
   border-radius: 1rem;
   border: 1px solid #888;
-  max-width: 400px;
+  width: 40%;
+  max-width: 80%;
   position: relative;
   overflow: hidden;
   -webkit-border-radius: 1rem;
@@ -36,12 +40,12 @@
 }
 
 /* Стилі для форми */
-form {
+.sign-form {
   display: flex;
   flex-direction: column;
 }
 
-label {
+.sign-label {
     font-size: 1.2rem;
     font-weight: 600;
   margin-bottom: 5px;
@@ -49,7 +53,7 @@ label {
   margin-right: auto;
 }
 
-input {
+.sign-input {
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -100,4 +104,20 @@ button:hover {
   background-color: #706f6f;
 }
 
+
+@media(max-width:750px){
+  .modal-widget{
+    width: 60%;
+  }
+  .sign-label{
+    /* border: 1px solid; */
+    margin:0.2rem auto ;
+  }
+}
+
+@media (min-width:1035px) {
+  .modal-widget{
+    width: 30%;
+  }
+}
 

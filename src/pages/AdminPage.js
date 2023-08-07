@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "../styles/AdminStyles/AdminPage.css";
-import { CalendarAdd, Ticket, UserCirlceAdd, UserTick } from "iconsax-react";
+import { CalendarAdd, Logout, LogoutCurve, Ticket, UserCirlceAdd, UserTick } from "iconsax-react";
 import Candidates from "../components/adminAccount/Candidates";
 import EventsAdmin from "../components/adminAccount/EventsAdmin";
 import VouchersAdmin from "../components/adminAccount/VouchersAdmin";
@@ -45,6 +45,10 @@ export default function AdminPage() {
           <li onClick={navigator} id="events" className="list-item">
             <CalendarAdd onClick={navigator} id= 'events' />
             {smallScreen ? null : "Events"}
+          </li>
+          <li onClick={navigator} id="/" className="list-item">
+            <LogoutCurve onClick={navigator} id= '/' />
+            {smallScreen ? null : "Log out"}
           </li>
         </ul>
       </div>
