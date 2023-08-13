@@ -22,7 +22,9 @@ export default function Users() {
 
   const showUsers = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/users")
+      .get("https://woodymember-server.azurewebsites.net/users", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => {
         setAllUsers(response.data);
         setUsers(response.data);
@@ -41,9 +43,15 @@ export default function Users() {
 
   const handleDeleteUser = function () {
     axios
-      .post("https://woodymember-server.azurewebsites.net/users/delete", {
-        id: targetId,
-      })
+      .post(
+        "https://woodymember-server.azurewebsites.net/users/delete",
+        {
+          id: targetId,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      )
       .then((response) => response && showUsers())
       .catch((error) => console.log(error));
     handleAgreeModalOpen();
@@ -51,7 +59,13 @@ export default function Users() {
 
   const handleSaveUser = function (userData) {
     axios
-      .post("https://woodymember-server.azurewebsites.net/users/edit", userData)
+      .post(
+        "https://woodymember-server.azurewebsites.net/users/edit",
+        userData,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      )
       .then((response) => response && showUsers())
       .catch((error) => console.log(error));
 

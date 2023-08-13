@@ -17,15 +17,21 @@ export default function CreateEvent(props) {
     event.preventDefault();
 
     axios
-      .post("https://woodymember-server.azurewebsites.net/events/create", {
-        title: eventName,
-        start_date: startDate,
-        expire_date: endDate,
+      .post(
+        "https://woodymember-server.azurewebsites.net/events/create",
+        {
+          title: eventName,
+          start_date: startDate,
+          expire_date: endDate,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      )
+      .then((response) => {
+        setMessage(response.data);
+        handleDecline();
       })
-        .then((response) => {
-            setMessage(response.data);
-            handleDecline();
-        })
       .catch((error) => console.log(error));
 
     setEventName("");

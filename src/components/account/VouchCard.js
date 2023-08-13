@@ -12,10 +12,16 @@ export default function VouchCard(props) {
 
   const handleYesClick = () => {
     axios
-      .post("https://woodymember-server.azurewebsites.net/vouchers/use", {
-        id: voucher.voucherId,
-        user_id: voucher.userId,
-      })
+      .post(
+        "https://woodymember-server.azurewebsites.net/vouchers/use",
+        {
+          id: voucher.voucherId,
+          user_id: voucher.userId,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        },
+      )
       .then((response) => response && handleBackClick())
       .catch((error) => console.log(error));
   };

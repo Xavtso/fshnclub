@@ -18,7 +18,9 @@ export default function Vouchers() {
   const showVouchers = function () {
     const id = localStorage.getItem("id");
     axios
-      .get(`https://woodymember-server.azurewebsites.net/vouchers/${id}`)
+      .get(`https://woodymember-server.azurewebsites.net/vouchers/${id}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => setVouchers(response.data?.reverse()))
       .catch((error) => console.log(error));
   };

@@ -15,7 +15,9 @@ export default function VouchersAdmin() {
 
   const showActiveVouchers = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/vouchers/all")
+      .get("https://woodymember-server.azurewebsites.net/vouchers/all", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => setVouchers(response.data?.reverse()))
       .catch((error) => console.log(error));
     
@@ -62,9 +64,15 @@ export default function VouchersAdmin() {
   const handleDeleteVoucher = function () {
     console.log(targetId);
     axios
-      .post("https://woodymember-server.azurewebsites.net/vouchers/delete", {
-        id: targetId,
-      })
+      .post(
+        "https://woodymember-server.azurewebsites.net/vouchers/delete",
+        {
+          id: targetId,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      )
       .then((response) => {
         console.log(response);
         showActiveVouchers();

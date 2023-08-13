@@ -14,7 +14,9 @@ export default function EventsAdmin() {
   const [targetId, setTargetId] = useState();
   const showActiveEvents = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/events")
+      .get("https://woodymember-server.azurewebsites.net/events", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => setEvents(response.data?.reverse()))
       .catch((error) => console.log(error));
   };
@@ -56,9 +58,15 @@ export default function EventsAdmin() {
 
   const handleDeleteEvent = function (id) {
     axios
-      .post("https://woodymember-server.azurewebsites.net/events/delete", {
-        id: targetId,
-      })
+      .post(
+        "https://woodymember-server.azurewebsites.net/events/delete",
+        {
+          id: targetId,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      )
       .then((response) => {
         console.log(response);
         showActiveEvents();

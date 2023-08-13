@@ -38,6 +38,7 @@ export default function SignUp({ onCloseModal }) {
   };
 
   const successfullLogin = function (token) {
+    localStorage.setItem('token',token)
     const { id, name, role } = jwtDecode(token);
     localStorage.setItem("id", id);
     localStorage.setItem("role", role);

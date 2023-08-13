@@ -18,7 +18,9 @@ export default function CreateVoucher(props) {
 
   const showUsers = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/users")
+      .get("https://woodymember-server.azurewebsites.net/users", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => setUsers(response.data))
       .catch((error) => console.log(error));
   };
@@ -92,12 +94,20 @@ export default function CreateVoucher(props) {
 
     if (selectedUsers && selectedUsers.length > 0) {
       axios
-        .post("https://woodymember-server.azurewebsites.net/vouchers/create", {
-          title: title,
-          start_date: startDate,
-          expire_date: endDate,
-          userIds: selectedUsers,
-        })
+        .post(
+          "https://woodymember-server.azurewebsites.net/vouchers/create",
+          {
+            title: title,
+            start_date: startDate,
+            expire_date: endDate,
+            userIds: selectedUsers,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          },
+        )
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
     } else alert("Choose the user(s) please!");

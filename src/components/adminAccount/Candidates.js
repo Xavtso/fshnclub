@@ -13,7 +13,9 @@ export default function Candidates() {
 
   const showCandidates = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/users/candidates")
+      .get("https://woodymember-server.azurewebsites.net/users/candidates", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => setCandidates(response.data))
       .catch((error) => console.log(error));
   };
@@ -24,9 +26,15 @@ export default function Candidates() {
 
   const handleApproveCandidate = function (id) {
     axios
-      .post("https://woodymember-server.azurewebsites.net/users/approve", {
-        id: id,
-      })
+      .post(
+        "https://woodymember-server.azurewebsites.net/users/approve",
+        {
+          id: id,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      )
       .then((response) => response && showCandidates())
       .catch((error) => console.log(error));
   };
@@ -35,7 +43,9 @@ export default function Candidates() {
     axios
       .post("https://woodymember-server.azurewebsites.net/users/decline", {
         id: targetCandidate,
-      })
+      },{
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        },)
       .then((response) => response && showCandidates())
       .catch((error) => console.log(error));
   };

@@ -11,8 +11,11 @@ export default function Events() {
   };
 
   const getEvents = function () {
+    const token = localStorage.getItem('token')
     axios
-      .get("https://woodymember-server.azurewebsites.net/events")
+      .get("https://woodymember-server.azurewebsites.net/events", {
+        headers:{Authorization: `Bearer ${token}`}
+      })
       .then((response) => setEvents(response.data?.reverse()))
       .catch((error) => console.log(error));
   };
