@@ -24,7 +24,7 @@ export default function SignUp({ onCloseModal }) {
     e.preventDefault();
     // Перенаправляємо користувача на сторінку "/user-home" якщо дані зібрано
     axios
-      .post("https://woodymember-server.azurewebsites.net/auth/login", {
+      .post("http://localhost:5000/auth/login", {
         name: name,
         phoneNumber: phone,
       })

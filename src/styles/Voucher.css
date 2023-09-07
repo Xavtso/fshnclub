@@ -118,7 +118,7 @@
     font-size: 4rem;
 }
 
-.one{
+/* .one{
     background-image: url(../images/wood02.png);
     background-size: cover;
     background-position: center;
@@ -128,7 +128,7 @@
     background-size: cover;
     background-position: center;
     margin-bottom: 0.5rem;
-}
+} */
 
 @media (max-width: 320px) {
  .btn-vouch{

@@ -13,7 +13,7 @@ export default function Candidates() {
 
   const showCandidates = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/users/candidates", {
+      .get("http://localhost:5000/users/candidates", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setCandidates(response.data))
@@ -27,7 +27,7 @@ export default function Candidates() {
   const handleApproveCandidate = function (id) {
     axios
       .post(
-        "https://woodymember-server.azurewebsites.net/users/approve",
+        "http://localhost:5000/users/approve",
         {
           id: id,
         },

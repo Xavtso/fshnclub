@@ -14,11 +14,12 @@ export default function CreateVoucher(props) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [selectedFile,setSelectedFile] = useState('')
   // const [message, setMessage] = useState(null);
 
   const showUsers = function () {
     axios
-      .get("https://woodymember-server.azurewebsites.net/users", {
+      .get("http://localhost:5000/users", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setUsers(response.data))
@@ -54,8 +55,6 @@ export default function CreateVoucher(props) {
   }
 
   const handleCandidateClick = function (userId) {
-
-
     // Вибираємо елемент зі відповідним userId
     const candidateElement = document.querySelector(
       `.candidate[data-userid="${userId}"]`,
@@ -87,7 +86,7 @@ export default function CreateVoucher(props) {
   };
 
   function handleDecline() {
-    props.onClose()
+    props.onClose();
   }
 
   const handleFormSubmit = function () {
@@ -95,15 +94,17 @@ export default function CreateVoucher(props) {
     if (selectedUsers && selectedUsers.length > 0) {
       axios
         .post(
-          "https://woodymember-server.azurewebsites.net/vouchers/create",
+          "http://localhost:5000/vouchers/create",
           {
             title: title,
             start_date: startDate,
             expire_date: endDate,
             userIds: selectedUsers,
+            image: selectedFile,
           },
           {
             headers: {
+              "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           },
@@ -115,9 +116,30 @@ export default function CreateVoucher(props) {
     handleDecline();
   };
 
+  function handleUpload(event) {
+
+    const file = event.target.files[0]
+    setSelectedFile(file)
+
+
+
+    // const formData = new FormData();
+    // formData.append("image", file);
+
+    // axios
+    //   .post("http://localhost:5000/vouchers/upload/image", formData, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //     },
+    //   })
+    //   .then((response) => console.log(response))
+    //   .catch((error) => console.log(error));
+  }
+
   return (
     <div className="createVouchers-layout">
-      <form className="vouchers-form" >
+      <form className="vouchers-form">
         <label className="event-label" htmlFor="eventName">
           Title:
         </label>
@@ -155,6 +177,12 @@ export default function CreateVoucher(props) {
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
           required
+        />
+        <input
+          type="file"
+          className="file-input"
+          accept="image/*"
+          onChange={handleUpload}
         />
         {/* {message && <span className="message">{message}</span>} */}
         <div className="event-controls">
@@ -205,12 +233,14 @@ export default function CreateVoucher(props) {
       </div>
       {/* {message && <p className="message">{message}</p>}
        */}
-      {agreeModal && createPortal(
-        <AgreeModal
-          onAgree={handleFormSubmit}
-          onDisagree={handleAgreeModalOpen}
-        />,document.body
-      )}
+      {agreeModal &&
+        createPortal(
+          <AgreeModal
+            onAgree={handleFormSubmit}
+            onDisagree={handleAgreeModalOpen}
+          />,
+          document.body,
+        )}
     </div>
   );
 }
