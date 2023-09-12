@@ -25,7 +25,6 @@ export default function Vouchers() {
   };
   useEffect(() => {
     showVouchers();
-    console.log(vouchers);
     // eslint-disable-next-line
   }, []);
 
@@ -34,25 +33,7 @@ export default function Vouchers() {
     showVouchers();
   };
 
-  function handleLoad(voucher) {
-    const imageData = voucher.image;
-    console.log(imageData);
-    // Створити Blob з буфера даних та фіксованим типом
-    const blob = new Blob([imageData.data], { type: "image/jpeg" });
-    console.log(blob);
-    // Створити URL з Blob
-    const imageUrl = URL.createObjectURL(blob);
-    
-    console.log(imageUrl);
-    // Створіть елемент <img> для відображення зображення
-    const imageElement = new Image();
-    imageElement.src = imageUrl.slice(5);
-    
-    imageElement.alt = voucher.title;
-    console.log(imageElement);
-    document.getElementById(voucher.id).appendChild(imageElement)
-    
-  }
+  
 
   return (
     <>
@@ -65,11 +46,10 @@ export default function Vouchers() {
       </div>
       {vouchers.map((voucher) => (
         <div
-         
+          style={{backgroundImage:`url(${voucher.image})` }}
           key={voucher.id}
           id={voucher.id}
           className="voucher one"
-          onClick={() => handleLoad(voucher)}
         >
           <div className={voucher.ifUsed ? "usedVoucher" : "hidden"}>
             <p className="usedVoucher-title">Used</p>

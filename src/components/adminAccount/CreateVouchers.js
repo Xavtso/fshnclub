@@ -14,7 +14,7 @@ export default function CreateVoucher(props) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [selectedFile,setSelectedFile] = useState('')
+  const [selectedFile, setSelectedFile] = useState("");
   // const [message, setMessage] = useState(null);
 
   const showUsers = function () {
@@ -90,7 +90,6 @@ export default function CreateVoucher(props) {
   }
 
   const handleFormSubmit = function () {
-
     if (selectedUsers && selectedUsers.length > 0) {
       axios
         .post(
@@ -100,7 +99,7 @@ export default function CreateVoucher(props) {
             start_date: startDate,
             expire_date: endDate,
             userIds: selectedUsers,
-            image: selectedFile,
+            file: selectedFile,
           },
           {
             headers: {
@@ -117,24 +116,8 @@ export default function CreateVoucher(props) {
   };
 
   function handleUpload(event) {
-
-    const file = event.target.files[0]
-    setSelectedFile(file)
-
-
-
-    // const formData = new FormData();
-    // formData.append("image", file);
-
-    // axios
-    //   .post("http://localhost:5000/vouchers/upload/image", formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     },
-    //   })
-    //   .then((response) => console.log(response))
-    //   .catch((error) => console.log(error));
+    const file = event.target.files[0];
+    setSelectedFile(file);
   }
 
   return (
