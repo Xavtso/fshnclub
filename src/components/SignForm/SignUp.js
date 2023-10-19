@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../../styles/SignUp.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { logUserIn } from "../../utils/auth-actions";
+import { useSelector } from "react-redux";
+import { userSliceActions } from "../../utils/slices/user-slice";
 
 export default function SignUp({ onCloseModal }) {
   const navigateTo = useNavigate();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("+45");
-  const [message, setMessage] = useState(null);
+  // const [message, setMessage] = useState(null);
+  const dispatch = useDispatch();
+  const { isLoggedIn, role } = useSelector((state) => state.user);
+
+  if (isLoggedIn) {
+    role === "admin" ? navigateTo("/admin") : navigateTo("/home");
+  }
+
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      dispatch(userSliceActions.checkIfLogin())
+    }
+  }, [dispatch,isLoggedIn]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,29 +37,16 @@ export default function SignUp({ onCloseModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Перенаправляємо користувача на сторінку "/user-home" якщо дані зібрано
-    axios
-      .post("http://localhost:5000/auth/login", {
-        name: name,
-        phoneNumber: phone,
-      })
-      .then((response) => response && successfullLogin(response.data.token))
-      .catch((error) => {
-        // console.log(localStorage);
-        console.log(error);
-        setMessage(error.response?.data.message);
-      });
-    // navigateTo("/");
-  };
+    const data = {
+      name: name,
+      phoneNumber: phone,
+    };
+    dispatch(logUserIn(data));
 
-  const successfullLogin = function (token) {
-    localStorage.setItem('token',token)
-    const { id, name, role } = jwtDecode(token);
-    localStorage.setItem("id", id);
-    localStorage.setItem("role", role);
-    localStorage.setItem("name", name);
-    role === "admin" ? navigateTo("/admin") : navigateTo("/user-home");
   };
+  
+    
+
 
   return (
     <div className="modal">
@@ -78,12 +80,12 @@ export default function SignUp({ onCloseModal }) {
             placeholder="+380 93 462 77 74"
             autoComplete="true"
             required
-            pattern="[0-9+]*" // Патерн для дозволу лише цифр
+            pattern="[0-9+]*"
             value={phone}
             minLength={13}
             onChange={handleInputChange}
           />
-          {message && <p className="message">{message}</p>}
+          {/* {message && <p className="message">{message}</p>} */}
           <button type="submit">Submit</button>
         </form>
       </div>

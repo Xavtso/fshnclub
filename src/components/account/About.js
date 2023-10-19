@@ -1,20 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import '../../styles/Features.css'
 
-export default function About(props) {
-  const navigate = useNavigate();
+export default function About() {
 
-  const handleBackClick = () => {
-    navigate("/");
-  };
 
   return (
     <div className="landing-about">
-      <span className="btn-back" onClick={handleBackClick}>
-        &larr;
-      </span>
       <h1 className="section-title about-title">About Us</h1>
       <p className="about-content">
         About us? There is nothing to tell here. You have never seen better

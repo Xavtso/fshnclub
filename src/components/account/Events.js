@@ -7,7 +7,7 @@ export default function Events() {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const handleBackClick = () => {
-    navigate("/user-home");
+    navigate("/home");
   };
 
   const getEvents = function () {

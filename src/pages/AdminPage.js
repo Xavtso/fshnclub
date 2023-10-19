@@ -1,63 +1,42 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "../styles/AdminStyles/AdminPage.css";
-import { CalendarAdd, LogoutCurve, Ticket, UserCirlceAdd, UserTick } from "iconsax-react";
-import Candidates from "../components/adminAccount/Candidates";
-import EventsAdmin from "../components/adminAccount/EventsAdmin";
-import VouchersAdmin from "../components/adminAccount/VouchersAdmin";
-import Users from "../components/adminAccount/Users";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect} from "react";
+import SideNav from "../components/adminAccount/SideNav";
+import { userSliceActions } from "../utils/slices/user-slice";
+import SignUp from "../components/SignForm/SignUp";
+import { createPortal } from "react-dom";
 
 export default function AdminPage() {
-  const [smallScreen, setSmallScreen] = useState(false);
+  const dispatch = useDispatch();
+  const { isLoggedIn,role } = useSelector((state) => state.user);
+  const navigateTo = useNavigate();
+  
 
-  const navigate = useNavigate();
-  const navigator = function (e) {
-    const target = e.target.id;
-    navigate(target);
-  };
+ useEffect(() => {
+   if (!isLoggedIn) {
+     dispatch(userSliceActions.checkIfLogin());
+   }
 
-  const calculateWidth = () => {
-    window.innerWidth <= 750 ? setSmallScreen(true) : setSmallScreen(false);
-  };
+   const timeoutId = setTimeout(() => {
+     if (role !== "admin") {
+       navigateTo('/')
+     };
+   }, 1000); 
 
-  useEffect(() => {
-    calculateWidth();
-  }, []);
+   // Повертаємо функцію очищення для очистки таймеру при розмонтовці компонента або при зміні залежностей
+   return () => clearTimeout(timeoutId);
+ }, [dispatch, isLoggedIn, role,navigateTo]);
 
   return (
+    
     <div className="adminBody">
-      <div className="sidebar">
-        <div className="admin-logo"></div>
-        <p className="sayHello">Hello, Mick !</p>
-        <ul className="sideNav">
-          <li onClick={navigator} id="" className="list-item">
-            <UserCirlceAdd />
-            {smallScreen ? null : "Candidates"}{" "}
-          </li>
-          <li onClick={navigator} id="users" className="list-item">
-            <UserTick onClick={navigator} id="users" />
-            {smallScreen ? null : "Users"}{" "}
-          </li>
-          <li onClick={navigator} id="vouchers" className="list-item">
-            <Ticket onClick={navigator} id="vouchers" />
-            {smallScreen ? null : "Vouchers"}
-          </li>
-          <li onClick={navigator} id="events" className="list-item">
-            <CalendarAdd onClick={navigator} id= 'events' />
-            {smallScreen ? null : "Events"}
-          </li>
-          <li onClick={navigator} id="/" className="list-item">
-            <LogoutCurve onClick={navigator} id= '/' />
-            {smallScreen ? null : "Log out"}
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route exact path="/" element={<Candidates />} />
-        <Route exact path="/users" element={<Users />} />
-        <Route exact path="/vouchers" element={<VouchersAdmin />} />
-        <Route exact path="/events" element={<EventsAdmin />} />
-      </Routes>
+      <SideNav />
+      <Outlet />
+    
+    
+      {!isLoggedIn && createPortal(<SignUp />, document.body)}
     </div>
+
   );
 }

@@ -13,7 +13,7 @@ export default function Vouchers() {
 
   const navigate = useNavigate();
   const handleBackClick = () => {
-    navigate("/user-home");
+    navigate("/home");
   };
 
   const showVouchers = async function () {

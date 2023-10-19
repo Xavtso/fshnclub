@@ -9,7 +9,11 @@
 
 /* Common styles for all screen sizes */
 .navbar {
+  position: fixed;
+  /* border: 1px solid; */
+  width: 100%;
   height: 3rem;
+  /* margin-bottom: 2; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,7 +47,7 @@
 .logo {
   font-weight: 600;
   font-size: 1.4rem;
-  cursor: none;
+  cursor: pointer;
 }
 
 /* Hamburger menu styles */
@@ -105,11 +109,16 @@
 
 /* Media Query for the hamburger menu */
 @media (max-width: 700px) {
+  .navbar{
+    width: 92%;
+  }
+  
   .nav-items {
     display: none;
   }
   .menu-button-container {
     display: flex;
+  
   }
   .menu {
     display: flex;
@@ -120,7 +129,7 @@
     position: absolute;
     top: 3rem;
     margin:0 auto ;
-    left: -5%;
+    /* left: -5%; */
     width: 87%;
     background-color: #76634200;
     height: 0;
@@ -158,6 +167,7 @@
 .phone-box{
     position: relative;
     margin-left: auto;
+    transform: translateY(2rem);
     margin-right: 15%;
     background-image: url('../images/phone.png');
     width: 20rem;
@@ -166,6 +176,10 @@
     background-position: center;
     filter: drop-shadow( 2px 3px 5px #222);
     -webkit-filter: drop-shadow( 2px 3px 5px #222);
+    -webkit-transform: translateY(2rem);
+    -moz-transform: translateY(2rem);
+    -ms-transform: translateY(2rem);
+    -o-transform: translateY(2rem);
 }
 
 .title-box{

@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Facebook, Instagram, Youtube } from "iconsax-react";
 import "../../styles/Features.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,17 +6,11 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Contact(props) {
-  const navigate = useNavigate();
-
-  const handleBackClick = () => {
-    navigate("/");
-  };
+  
 
   return (
     <div className="landing-contacts">
-      <span className="btn-back" onClick={handleBackClick}>
-        &larr;
-      </span>
+   
 
       <h1 className="section-title">Contacts</h1>
       <p className="text-content">You can contact us in this ways</p>
