@@ -1,34 +1,31 @@
 import { User } from "iconsax-react";
 import "../../styles/AdminStyles/Layouts.css";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import NotFound from "./NotFound";
 import "../../styles/AdminStyles/CheckBox.css";
 import AgreeModal from "./AgreeModal";
 import { createPortal } from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userSliceActions } from "../../utils/slices/user-slice";
+import { createNewVoucher, getUsers } from "../../utils/content-actions";
 
 export default function CreateVoucher(props) {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+  const { users } = useSelector((state) => state.admin);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [agreeModal, setAgreeModal] = useState(false);
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
-  // const [message, setMessage] = useState(null);
-
-  const showUsers = function () {
-    axios
-      .get("http://localhost:5000/users", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
-      .then((response) => setUsers(response.data))
-      .catch((error) => console.log(error));
-  };
+  const [hasFetchedData, setHasFetchedData] = useState(false);
 
   useEffect(() => {
-    showUsers();
-  }, []);
+    if (!hasFetchedData) {
+      dispatch(getUsers());
+      setHasFetchedData(!hasFetchedData);
+    }
+  }, [hasFetchedData, dispatch]);
 
   function calculateAge(birthDate) {
     if (!birthDate) {
@@ -71,8 +68,6 @@ export default function CreateVoucher(props) {
       candidateElement.classList.add("active");
       setSelectedUsers([...selectedUsers, userId]);
     }
-
-    //   console.log(selectedUsers);
   };
 
   const handleSelectAll = function () {
@@ -91,26 +86,16 @@ export default function CreateVoucher(props) {
 
   const handleFormSubmit = function () {
     if (selectedUsers && selectedUsers.length > 0) {
-      axios
-        .post(
-          "http://localhost:5000/vouchers/create",
-          {
-            title: title,
-            start_date: startDate,
-            expire_date: endDate,
-            userIds: selectedUsers,
-            file: selectedFile,
-          },
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          },
-        )
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error));
-    } else alert("Choose the user(s) please!");
+      const data = {
+        title: title,
+        start_date: startDate,
+        expire_date: endDate,
+        userIds: selectedUsers,
+        file: selectedFile,
+      };
+      dispatch(createNewVoucher(data));
+    } else
+      dispatchEvent(userSliceActions.viewMessage("Choose the user(s) please!"));
 
     handleDecline();
   };
@@ -161,13 +146,17 @@ export default function CreateVoucher(props) {
           onChange={(e) => setEndDate(e.target.value)}
           required
         />
+        <label className="event-label" htmlFor="image">
+          Image:
+        </label>
         <input
           type="file"
+          id="image"
           className="file-input"
           accept="image/*"
           onChange={handleUpload}
+          required={true}
         />
-        {/* {message && <span className="message">{message}</span>} */}
         <div className="event-controls">
           <button
             className="eventCreate-btn"
@@ -214,8 +203,6 @@ export default function CreateVoucher(props) {
           ChoseAll
         </button>
       </div>
-      {/* {message && <p className="message">{message}</p>}
-       */}
       {agreeModal &&
         createPortal(
           <AgreeModal

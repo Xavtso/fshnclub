@@ -23,12 +23,9 @@ export default function SideNav() {
     navigate(target);
   };
 
-  const calculateWidth = () => {
-    window.innerWidth <= 750 ? setSmallScreen(true) : setSmallScreen(false);
-  };
 
   useEffect(() => {
-    calculateWidth();
+    window.innerWidth <= 750 ? setSmallScreen(true) : setSmallScreen(false);
   }, []);
 
     const handleLogOut = function () {

@@ -2,22 +2,31 @@
     position: absolute;
     top: 0;
     z-index: 2;
-    /* left:  auto; */
-    margin-left: 0rem;
-    width: 75%;
+    /*left:  auto;
+    */margin-left: 0rem;
+    width: 74%;
     height: 100vh;
     max-width:100%;
+    
     background-color: #0000007c;
     display: flex;
     align-items: center;
     justify-content: center;
+ 
 }
 
 .modal-content{
-width: 30%;
-margin-inline:auto ;
-background-color: #444654;
-border: none;
+    width: 35%;
+    margin-inline:auto ;
+    background-color: #444654;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius:1rem ;
+    -webkit-border-radius:1rem ;
+    -moz-border-radius:1rem ;
+    -ms-border-radius:1rem ;
+    -o-border-radius:1rem ;
+    box-shadow: 0px 0px 5px 0.1px #b7b1b1;
 }
 
 .editSubmit-btn{
@@ -61,7 +70,8 @@ border: none;
 }
 
 .name-label,.birth-label,.phone-label,.role-label{
-
+    font-weight: 600;
+    font-size: 18px;
     margin:0rem ;
     margin-right:auto ;
 }
@@ -91,12 +101,13 @@ border: none;
 .role-input{
     background-color: #444654;
     border: none;
-    border-radius: 2rem;
-    -webkit-border-radius: 2rem;
-    -moz-border-radius: 2rem;
-    -ms-border-radius: 2rem;
-    -o-border-radius: 2rem;
-    padding: 5px;
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    outline: none;
     color: #fff;
     background-color: #65687a;
     box-shadow:#222 0px 0px 4px 0.5px  ;
@@ -109,6 +120,12 @@ border: none;
     box-shadow:#222 0px 0px 4px 0.5px  ;
     cursor: text;
     color: #fff;
+    padding: 0.2rem 0.8rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
 
 ::-webkit-calendar-picker-indicator{

@@ -2,15 +2,16 @@ import { eventsSliceActions } from "./slices/events-slice";
 import axios from "axios";
 import { userSliceActions } from "./slices/user-slice";
 import { adminSliceActions } from "./slices/admin-slice";
+import { vouchersSliceActions } from "./slices/vouchers-slice";
 
-// const prod = "https://woodymember-server.azurewebsites.net/";
-const dev = "http://localhost:5000";
-
+const prod = "https://woodymember-server.azurewebsites.net/";
+// const dev = "http://localhost:5000";
+const dev = prod;
+const token = localStorage.getItem("token");
 // Events
 export function viewEvents() {
   return (dispatch) => {
     const getEvents = function () {
-      const token = localStorage.getItem("token");
       axios
         .get(`${dev}/events`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -39,7 +40,7 @@ export function deleteEvent(data) {
           },
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${token}`,
             },
           },
         )
@@ -57,6 +58,37 @@ export function deleteEvent(data) {
   };
 }
 
+export function createNewEvent(data) {
+  return (dispatch) => {
+    const handleCreateNewEvent = function () {
+      axios
+        .post(
+          `${dev}/events/create`,
+          { data },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((response) =>
+          dispatch(userSliceActions.viewMessage(response.data)),
+        )
+        .catch((error) =>
+          dispatch(userSliceActions.viewMessage(error.response.data.message)),
+        );
+    };
+    try {
+      handleCreateNewEvent();
+    } catch (err) {
+      dispatch(userSliceActions.viewMessage(err.response.data.message));
+    }
+  };
+}
+
+
+
 /////////////////////////////////////////////////////
 
 // Users
@@ -66,7 +98,7 @@ export function getUsers() {
       axios
         .get(`${dev}/users`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         })
         .then((response) => {
@@ -87,7 +119,7 @@ export function editUserInfo(data) {
     const handleSaveUser = function () {
       axios.post(`${dev}/users/edit`, data, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
     };
@@ -109,7 +141,7 @@ export function deleteUser(data) {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       );
@@ -132,7 +164,7 @@ export function getCandidates() {
       axios
         .get(`${dev}/users/candidates`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         })
         .then((response) =>
@@ -160,7 +192,7 @@ export function approveCandidate(data) {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       );
@@ -184,7 +216,7 @@ export function declineCandidate(data) {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       );
@@ -192,6 +224,120 @@ export function declineCandidate(data) {
     try {
       handleDeclineCandidate();
       dispatch(adminSliceActions.filterCandidates(data));
+    } catch (err) {
+      dispatch(userSliceActions.viewMessage(err.response.data.message));
+    }
+  };
+}
+////////////////////////////////////////////////////////////////////////////
+
+// Vouchers
+
+export function getVouchers() {
+  return (dispatch) => {
+    const showActiveVouchers = function () {
+      axios
+        .get(`${dev}/vouchers/all`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) =>
+          dispatch(
+            vouchersSliceActions.fetchVouchers(response.data?.reverse()),
+          ),
+        )
+        .catch((error) =>
+          dispatch(userSliceActions.viewMessage(error.response.data.message)),
+        );
+    };
+    try {
+      showActiveVouchers();
+    } catch (err) {
+      dispatch(userSliceActions.viewMessage(err.response.data.message));
+    }
+  };
+}
+export function getUserVouchers() {
+  return (dispatch) => {
+    const showUserVouchers = function () {
+      const id = localStorage.getItem('id');
+      axios
+        .get(`${dev}/vouchers/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) =>
+          dispatch(
+            vouchersSliceActions.fetchVouchers(response.data?.reverse()),
+          ),
+        )
+        .catch((error) =>
+          dispatch(userSliceActions.viewMessage(error.response.data.message)),
+        );
+    };
+    try {
+      showUserVouchers();
+    } catch (err) {
+      dispatch(userSliceActions.viewMessage(err.response.data.message));
+    }
+  };
+}
+
+export function deleteVoucher(id) {
+  return (dispatch) => {
+    const handleDeleteVoucher = function () {
+      axios
+        .post(
+          `${dev}/vouchers/delete`,
+          {
+            id: id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) =>
+          dispatch(userSliceActions.viewMessage(err.response.data.message)),
+        );
+    };
+    try {
+      handleDeleteVoucher();
+    } catch (err) {
+      dispatch(userSliceActions.viewMessage(err.response.data.message));
+    }
+  };
+}
+
+export function createNewVoucher(data) {
+  return (dispatch) => {
+    const handleCreateNewVoucher = function () {
+      axios
+        .post(
+          `${dev}/vouchers/create`,
+          { data },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((response) =>
+          dispatch(userSliceActions.viewMessage(response.data)),
+        )
+        .catch((error) =>
+          dispatch(userSliceActions.viewMessage(error.response.data.message)),
+        );
+    };
+    try {
+      handleCreateNewVoucher();
     } catch (err) {
       dispatch(userSliceActions.viewMessage(err.response.data.message));
     }

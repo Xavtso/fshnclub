@@ -1,36 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Voucher.css";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import VouchCard from "./VouchCard";
 import { createPortal } from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserVouchers } from "../../utils/content-actions";
 
 
 export default function Vouchers() {
-  const [vouchers, setVouchers] = useState([]);
+  const [hasFetchedData, setHasFetchedData] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedVoucher, setSelectedVoucher] = useState([]);
+  const dispatch = useDispatch();
+  const {vouchers} = useSelector(state => state.vouchers)
 
   const navigate = useNavigate();
   const handleBackClick = () => {
     navigate("/home");
   };
 
-  const showVouchers = async function () {
-    const id = localStorage.getItem("id");
-    const response = await axios.get(`http://localhost:5000/vouchers/${id}`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    });
-    setVouchers(response.data?.reverse());
-  };
+  
   useEffect(() => {
-    showVouchers();
-    // eslint-disable-next-line
-  }, []);
+    if (!hasFetchedData) {
+      dispatch(getUserVouchers())
+      setHasFetchedData(!hasFetchedData)
+    }
+  }, [hasFetchedData,dispatch]);
 
   const handleClose = function () {
     setShowModal(!showModal);
-    showVouchers();
   };
 
   
@@ -44,7 +42,7 @@ export default function Vouchers() {
         <div className="land-V-title">Vouchers</div>
         <span className="down-arrow">&darr;</span>
       </div>
-      {vouchers.map((voucher) => (
+      {vouchers?.map((voucher) => (
         <div
           style={{backgroundImage:`url(${voucher.image})` }}
           key={voucher.id}

@@ -34,7 +34,7 @@ const EditModal = ({ id, isOpen, onClose, onSave, formData }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        <h2 className="modal-title">Enter User Info</h2>
+        <h2 className="modal-title">User Info</h2>
         <form className="edit-form">
           <div className="input-group">
             <label htmlFor="name" className="name-label">
