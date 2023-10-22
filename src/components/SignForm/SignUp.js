@@ -10,9 +10,8 @@ export default function SignUp({ onCloseModal }) {
   const navigateTo = useNavigate();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("+45");
-  // const [message, setMessage] = useState(null);
   const dispatch = useDispatch();
-  const { isLoggedIn, role } = useSelector((state) => state.user);
+  const { isLoggedIn, role} = useSelector((state) => state.user);
 
   if (isLoggedIn) {
     role === "admin" ? navigateTo("/admin") : navigateTo("/home");
@@ -85,7 +84,6 @@ export default function SignUp({ onCloseModal }) {
             minLength={13}
             onChange={handleInputChange}
           />
-          {/* {message && <p className="message">{message}</p>} */}
           <button type="submit">Submit</button>
         </form>
       </div>

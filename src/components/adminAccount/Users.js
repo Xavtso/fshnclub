@@ -1,40 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { SearchNormal1, User, UserEdit, UserRemove } from "iconsax-react";
 import "../../styles/AdminStyles/Layouts.css";
-import axios from "axios";
 import EditModal from "./EditModal";
 import AgreeModal from "./AgreeModal";
 import NotFound from "./NotFound";
 
 import { createPortal } from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { adminSliceActions } from "../../utils/slices/admin-slice";
+import {
+  deleteUser,
+  editUserInfo,
+  getUsers,
+} from "../../utils/content-actions";
 
 export default function Users() {
-  const [allUsers, setAllUsers] = useState([]);
-  const [users, setUsers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [targetUser, setTargetUser] = useState();
   const [agreeModal, setAgreeModal] = useState(false);
   const [targetId, setTargetId] = useState();
-  const [filterRole, setFilterRole] = useState("");
-  // eslint-disable-next-line
-  const [sortAgeAsc, setSortAgeAsc] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const showUsers = function () {
-    axios
-      .get("https://woodymember-server.azurewebsites.net/users", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
-      .then((response) => {
-        setAllUsers(response.data);
-        setUsers(response.data);
-      })
-      .catch((error) => console.log(error));
-  };
+  const { users } = useSelector((state) => state.admin);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    showUsers();
-  }, []);
+    if (!users || users.length < 1) {
+      dispatch(getUsers());
+    }
+  }, [dispatch, users]);
 
   const handleEditUserInfo = function (targetUser) {
     setTargetUser(targetUser);
@@ -42,34 +36,13 @@ export default function Users() {
   };
 
   const handleDeleteUser = function () {
-    axios
-      .post(
-        "https://woodymember-server.azurewebsites.net/users/delete",
-        {
-          id: targetId,
-        },
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        },
-      )
-      .then((response) => response && showUsers())
-      .catch((error) => console.log(error));
+    dispatch(deleteUser(targetId));
     handleAgreeModalOpen();
   };
 
   const handleSaveUser = function (userData) {
-    axios
-      .post(
-        "https://woodymember-server.azurewebsites.net/users/edit",
-        userData,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        },
-      )
-      .then((response) => response && showUsers())
-      .catch((error) => console.log(error));
-
-    setIsModalOpen(false);
+    dispatch(editUserInfo(userData));
+    setIsModalOpen(!isModalOpen);
   };
 
   function calculateAge(birthDate) {
@@ -96,37 +69,18 @@ export default function Users() {
     setAgreeModal(!agreeModal);
   }
 
-  const handleSortByAge = function (ascending) {
-    if (ascending === "none") {
-      return setUsers(users);
-    }
-    setSortAgeAsc(ascending);
-    const sortedUsers = [...users].sort((a, b) => {
-      if (!a.birthDate || !b.birthDate) return 0;
-      const aAge = calculateAge(a.birthDate);
-      const bAge = calculateAge(b.birthDate);
-      return ascending ? aAge - bAge : bAge - aAge;
-    });
-    setUsers(sortedUsers);
-  };
-
-  const handleSortByRole = function (role) {
-    setFilterRole(role);
-    const filteredUsers = allUsers.filter((user) =>
-      role === "all" ? user : user.role === role,
+  function handleSortUser(type, value) {
+    dispatch(
+      adminSliceActions.sortUsers({
+        type: type,
+        value: value,
+      }),
     );
-    setUsers(filteredUsers);
-  };
+  }
 
   const handleSearchChange = function (event) {
-    const searchTerm = event.target.value.toLowerCase();
-    setSearchTerm(searchTerm);
-    const filteredUsers = allUsers.filter(
-      (user) =>
-        user.name.toLowerCase().includes(searchTerm) ||
-        user.phoneNumber.toLowerCase().includes(searchTerm),
-    );
-    setUsers(filteredUsers);
+    setSearchTerm(event.target.value);
+    dispatch(adminSliceActions.searchUser(searchTerm));
   };
 
   return (
@@ -149,20 +103,20 @@ export default function Users() {
           <span className="filter-title">Filter by</span>
           <select
             className="filter-select"
-            value={filterRole}
-            onChange={(e) => handleSortByRole(e.target.value)}
+            // value={filterRole}
+            onChange={(e) => handleSortUser("role", e.target.value)}
           >
             <option value="all">All</option>
-            <option value="customer">Customer</option>
-            <option value="employee">Employee</option>
-            <option value="admin">Admin</option>
+            <option value="customer">Customers</option>
+            <option value="employee">Employees</option>
+            <option value="admin">Admins</option>
           </select>
         </div>
         <div className="filterOrSort-containers">
           <span className="filter-title">Sort by</span>
           <select
             className="filter-select"
-            onChange={(e) => handleSortByAge(e.target.value === "asc")}
+            onChange={(e) => handleSortUser("ascending", e.target.value)}
           >
             <option value="none">None</option>
             <option value="asc">Age ↑</option>
@@ -174,7 +128,7 @@ export default function Users() {
         {users.length === 0 ? (
           <NotFound />
         ) : (
-          users.map((user) => (
+          users?.map((user) => (
             <div key={user.id} className="candidate">
               <div className="info">
                 <User className="user-li-icon" />
@@ -213,12 +167,14 @@ export default function Users() {
         onSave={handleSaveUser}
         formData={targetUser}
       />
-      {agreeModal && createPortal(
-        <AgreeModal
-          onAgree={handleDeleteUser}
-          onDisagree={handleAgreeModalOpen}
-        />,document.body
-      )}
+      {agreeModal &&
+        createPortal(
+          <AgreeModal
+            onAgree={handleDeleteUser}
+            onDisagree={handleAgreeModalOpen}
+          />,
+          document.body,
+        )}
     </div>
   );
 }

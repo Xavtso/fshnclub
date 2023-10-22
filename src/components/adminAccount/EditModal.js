@@ -9,7 +9,6 @@ const EditModal = ({ id, isOpen, onClose, onSave, formData }) => {
   const [birthDate, setBirthDate] = useState("");
 
   const handleSave = () => {
-    // Викликаємо onSave з введеними даними
     onSave({ id, name, phoneNumber, role, birthDate });
     onClose();
   };
@@ -20,7 +19,7 @@ const EditModal = ({ id, isOpen, onClose, onSave, formData }) => {
       setPhoneNumber(formData.phoneNumber || "");
       setRole(formData.role || "");
 
-      // Перетворюємо значення дати у потрібний формат "yyyy-MM-dd"
+      // "yyyy-MM-dd"
       setBirthDate(
         formData.birthDate
           ? new Date(formData.birthDate).toISOString().split("T")[0]

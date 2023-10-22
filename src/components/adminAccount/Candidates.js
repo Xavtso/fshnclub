@@ -1,53 +1,37 @@
 import { CloseCircle, TickCircle, User } from "iconsax-react";
 import "../../styles/AdminStyles/Layouts.css";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import NotFound from "./NotFound";
 import { createPortal } from "react-dom";
 import AgreeModal from "./AgreeModal";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  approveCandidate,
+  declineCandidate,
+  getCandidates,
+} from "../../utils/content-actions";
+
 
 export default function Candidates() {
-  const [candidates, setCandidates] = useState([]);
+  const { candidates } = useSelector((state) => state.admin);
   const [targetCandidate, setTargetCandidate] = useState(null);
   const [agreeModal, setAgreeModal] = useState(false);
-
-  const showCandidates = function () {
-    axios
-      .get("http://localhost:5000/users/candidates", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
-      .then((response) => setCandidates(response.data))
-      .catch((error) => console.log(error));
-  };
+  const [hasFetchedData, setHasFetchedData] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    showCandidates();
-  }, []);
+    if (!hasFetchedData) {
+      dispatch(getCandidates());
+      setHasFetchedData(true);
+    }
+  }, [dispatch, hasFetchedData]);
 
   const handleApproveCandidate = function (id) {
-    axios
-      .post(
-        "http://localhost:5000/users/approve",
-        {
-          id: id,
-        },
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        },
-      )
-      .then((response) => response && showCandidates())
-      .catch((error) => console.log(error));
+    dispatch(approveCandidate(id));
   };
 
   const handleDeclineCandidate = function () {
-    axios
-      .post("https://woodymember-server.azurewebsites.net/users/decline", {
-        id: targetCandidate,
-      },{
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        },)
-      .then((response) => response && showCandidates())
-      .catch((error) => console.log(error));
+    dispatch(declineCandidate(targetCandidate));
   };
 
   return (

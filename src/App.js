@@ -15,9 +15,13 @@ import VouchersAdmin from './components/adminAccount/VouchersAdmin';
 import EventsAdmin from './components/adminAccount/EventsAdmin';
 import LandingContent from "./components/LandingContent";
 import HomeLayout from "./components/account/HomeLayout";
+import { useSelector } from "react-redux";
+import Notification from "./components/Notification";
 
 
 function App() {
+  const { message } = useSelector(state => state.user);
+  
 
   return (
     <>
@@ -44,7 +48,7 @@ function App() {
         </Route>
       </Routes>
 
-      {/* {!isLoggedIn && createPortal(<SignUp />, document.body)} */}
+      {message && <Notification/>}
     </>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import SignUp from "./SignForm/SignUp";
 
+
 export default function LandingContent() {
     const [isModalOpen, setModalOpen] = useState(false);
     
@@ -20,15 +21,14 @@ export default function LandingContent() {
             Sam Woody member mod tager do ekslusive tilbud, rabatter og
             invitationer til lukkede events!
           </h3>
-          <button
-            className="btn-sign"
-            onClick={handleModal}
-          >
+          <button className="btn-sign" onClick={handleModal}>
             Sign Up
           </button>
         </div>
-            <div className="phone-box"></div>
-            {isModalOpen && createPortal(<SignUp onCloseModal={handleModal } />,document.body)}
+        <div className="phone-box"></div>
+      
+        {isModalOpen &&
+          createPortal(<SignUp onCloseModal={handleModal} />, document.body)}
       </div>
     );
 }

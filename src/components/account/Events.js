@@ -1,28 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Voucher.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { viewEvents } from "../../utils/content-actions";
 
 export default function Events() {
   const navigate = useNavigate();
-  const [events, setEvents] = useState([]);
+  const { events } = useSelector((state) => state.event);
+  const [hasFetchedData, setHasFetchedData] = useState(false)
+ 
   const handleBackClick = () => {
     navigate("/home");
   };
-
-  const getEvents = function () {
-    const token = localStorage.getItem('token')
-    axios
-      .get("https://woodymember-server.azurewebsites.net/events", {
-        headers:{Authorization: `Bearer ${token}`}
-      })
-      .then((response) => setEvents(response.data?.reverse()))
-      .catch((error) => console.log(error));
-  };
-
+  
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if (!hasFetchedData) {
+      dispatch(viewEvents());
+      setHasFetchedData(true)
+    }
+  }, [dispatch, hasFetchedData]);
+  
 
   function formatDate(dateString) {
-    const date = new Date(dateString)
+    const date = new Date(dateString);
     const day = date.getDate();
     const month = date.getMonth() + 1;
 
@@ -32,9 +34,6 @@ export default function Events() {
     return `${formattedDay}.${formattedMonth}`;
   }
 
-  useEffect(() => {
-    getEvents();
-  }, []);
 
   return (
     <>
@@ -45,13 +44,14 @@ export default function Events() {
         <div className="land-V-title">Events</div>
         <span className="down-arrow">&darr;</span>
       </div>
-      {events.map((event) => (
+      {events?.map((event) => (
         <div className="event one" key={event.id}>
           <h1 className="event-title">{event.title}</h1>
-          <p className="date">{`${formatDate(event.start_date)} - ${formatDate(event.expire_date)}`}</p>
+          <p className="date">{`${formatDate(event.start_date)} - ${formatDate(
+            event.expire_date,
+          )}`}</p>
         </div>
       ))}
-    
     </>
   );
 }

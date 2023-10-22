@@ -8,6 +8,7 @@ const userSlice = createSlice({
     isLoggedIn: false,
     name: null,
     role: null,
+    message:null,
   },
   reducers: {
     logIn(state, action) {
@@ -59,6 +60,13 @@ const userSlice = createSlice({
       state.name = null;
       state.role = null;
       localStorage.clear();
+    },
+
+    viewMessage(state,action) {
+      state.message = action.payload;
+    },
+    closeMessage(state, action) {
+      state.message = null
     }
   },
 });
