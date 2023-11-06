@@ -13,7 +13,7 @@ export function viewEvents() {
   return (dispatch) => {
     const getEvents = function () {
       axios
-        .get(`${dev}/events`, {
+        .get(`${prod}/events`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -34,7 +34,7 @@ export function deleteEvent(data) {
     const handleDeleteEvent = function () {
       axios
         .post(
-          `${dev}/events/delete`,
+          `${prod}/events/delete`,
           {
             id: data,
           },
@@ -63,7 +63,7 @@ export function createNewEvent(data) {
     const handleCreateNewEvent = function () {
       axios
         .post(
-          `${dev}/events/create`,
+          `${prod}/events/create`,
           { data },
           {
             headers: {
@@ -96,7 +96,7 @@ export function getUsers() {
   return (dispatch) => {
     const showUsers = function () {
       axios
-        .get(`${dev}/users`, {
+        .get(`${prod}/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -117,7 +117,7 @@ export function getUsers() {
 export function editUserInfo(data) {
   return (dispatch) => {
     const handleSaveUser = function () {
-      axios.post(`${dev}/users/edit`, data, {
+      axios.post(`${prod}/users/edit`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -135,7 +135,7 @@ export function deleteUser(data) {
   return (dispatch) => {
     const handleDeleteUser = function () {
       axios.post(
-        `${dev}/users/delete`,
+        `${prod}/users/delete`,
         {
           id: data,
         },
@@ -162,7 +162,7 @@ export function getCandidates() {
   return (dispatch) => {
     const showCandidates = function () {
       axios
-        .get(`${dev}/users/candidates`, {
+        .get(`${prod}/users/candidates`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -186,7 +186,7 @@ export function approveCandidate(data) {
   return (dispatch) => {
     const handleApproveCandidate = function () {
       axios.post(
-        `${dev}/users/approve`,
+        `${prod}/users/approve`,
         {
           id: data,
         },
@@ -210,7 +210,7 @@ export function declineCandidate(data) {
   return (dispatch) => {
     const handleDeclineCandidate = function () {
       axios.post(
-        `${dev}/users/decline`,
+        `${prod}/users/decline`,
         {
           id: data,
         },
@@ -237,7 +237,7 @@ export function getVouchers() {
   return (dispatch) => {
     const showActiveVouchers = function () {
       axios
-        .get(`${dev}/vouchers/all`, {
+        .get(`${prod}/vouchers/all`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -263,7 +263,7 @@ export function getUserVouchers() {
     const showUserVouchers = function () {
       const id = localStorage.getItem('id');
       axios
-        .get(`${dev}/vouchers/${id}`, {
+        .get(`${prod}/vouchers/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -290,7 +290,7 @@ export function deleteVoucher(id) {
     const handleDeleteVoucher = function () {
       axios
         .post(
-          `${dev}/vouchers/delete`,
+          `${prod}/vouchers/delete`,
           {
             id: id,
           },
@@ -320,7 +320,7 @@ export function createNewVoucher(data) {
     const handleCreateNewVoucher = function () {
       axios
         .post(
-          `${dev}/vouchers/create`,
+          `${prod}/vouchers/create`,
           { data },
           {
             headers: {
